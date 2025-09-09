@@ -57,7 +57,7 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await axios.post("https://mtsmuhcil-backend.onrender.com/api/admin/login", {
+      const res = await axios.post("https://be-production-d9fe.up.railway.app/api/admin/login", {
         username,
         password,
       });
