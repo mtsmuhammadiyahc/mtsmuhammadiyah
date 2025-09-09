@@ -1,0 +1,189 @@
+/* ---------- running text ---------- */
+.mts-running {
+  background: #08306b;
+  color: #f0f3ee;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.mts-running-inner span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: mts-run 16s linear infinite;
+}
+
+@keyframes mts-run {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ---------- navbar container ---------- */
+.mts-navbar {
+  background: #0d47a1; /* biru modern klasik */
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  box-shadow: 0 2px 8px rgba(3, 7, 18, 0.2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mts-navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* logo */
+.mts-logo img,
+.logo-img {
+  max-height: 90px;   /* biar pas dan tidak terlalu besar */
+  width: auto;        /* jaga proporsinya */
+  object-fit: contain;
+  display: block;
+}
+
+/* toggle (mobile) */
+.mts-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* menu (desktop) */
+.mts-menu {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* items */
+.mts-item {
+  position: relative;
+}
+
+/* links & buttons */
+.mts-link,
+.mts-sub-toggle {
+  color: #fff;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.mts-link:hover,
+.mts-sub-toggle:hover {
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+}
+
+/* chevron small */
+.mts-chevron { font-size: 12px; }
+
+/* dropdown (hidden by default) */
+.mts-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #ffffff;
+  color: #1a1a1a;
+  min-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.12);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform-origin: top left;
+  transform: translateY(-8px);
+  transition: max-height 0.28s ease, opacity 0.28s ease, transform 0.28s ease;
+  z-index: 1300;
+}
+
+/* dropdown links */
+.mts-dropdown-link {
+  display: block;
+  padding: 10px 14px;
+  color: #0b254a;
+  text-decoration: none;
+  transition: background 0.14s ease;
+}
+
+.mts-dropdown-link:hover {
+  background: #f2f6fb;
+}
+
+/* open state */
+.mts-has-sub.open .mts-dropdown,
+.mts-has-sub:hover .mts-dropdown { /* hover still works on desktop */
+  max-height: 800px; /* large enough */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 768px) {
+  .mts-toggle { display: inline-block; }
+
+  .mts-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #0d47a1;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 16px;
+    display: none;
+  }
+
+  .mts-menu.open { display: flex; }
+
+  .mts-item { width: 100%; }
+
+  .mts-sub-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 8px;
+  }
+
+  /* dropdown for mobile becomes accordion-like */
+  .mts-dropdown {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: transparent;
+    box-shadow: none;
+    max-height: 0;
+    opacity: 1;
+    transform: none;
+    transition: max-height 0.28s ease;
+  }
+
+  .mts-has-sub.open .mts-dropdown { max-height: 600px; } /* expand */
+  .mts-dropdown-link { color: #fff; padding-left: 28px; }
+  .mts-dropdown-link:hover { background: rgba(255,255,255,0.06); }
+}
+
+.logo-img {
+  height: 70px; /* atur sesuai kebutuhan */
+  width: auto;
+  display: block;
+}

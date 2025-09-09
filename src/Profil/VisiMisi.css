@@ -1,0 +1,64 @@
+.visimisi-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.visimisi-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.visimisi-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #475569;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.visimisi-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+.visimisi-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  line-height: 1.8;
+  color: #334155;
+}
+
+@media (max-width: 768px) {
+  .visimisi-container {
+    padding: 15px;
+  }
+
+  .visimisi-title {
+    font-size: 1.5rem;
+  }
+
+  .visimisi-subtitle {
+    font-size: 1rem;
+  }
+
+  .visimisi-content p,
+  .visimisi-content ul {
+    font-size: 0.95rem;
+  }
+}
+
+.visimisi-content ol {
+  padding-left: 20px;
+  line-height: 1.8;
+  color: #334155;
+  list-style-type: decimal;
+}
