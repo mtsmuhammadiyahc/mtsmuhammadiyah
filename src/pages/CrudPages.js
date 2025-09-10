@@ -270,7 +270,7 @@ function CrudPages({ pageTitle }) {
     try {
       const token = localStorage.getItem("adminToken");
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/${mapping.url}`,
+        `${process.env.REACT_APP_API_URL}/api/admin/${mapping.url}`,
         dataToSend,
         {
           headers: {
