@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function BeritaPage() {
+function Berita() {
   const [berita, setBerita] = useState([]);
   const [formData, setFormData] = useState({
     judul: "",
