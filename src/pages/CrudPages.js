@@ -1,6 +1,6 @@
 // src/pages/CrudPages.js
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api/adminApi"; 
 
 function CrudPages({ pageTitle }) {
   const [formData, setFormData] = useState({});
@@ -269,8 +269,8 @@ function CrudPages({ pageTitle }) {
 
     try {
       const token = localStorage.getItem("adminToken");
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/${mapping.url}`,
+      const res = await api.post(
+        `/${mapping.url}`,   // ⬅️ cukup pakai relative url, instance sudah tahu BASE_URL
         dataToSend,
         {
           headers: {
