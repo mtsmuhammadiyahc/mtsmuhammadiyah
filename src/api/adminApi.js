@@ -11,7 +11,7 @@ const instance = axios.create({
 
 // attach token automatically if exists
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('admin_token');
+  const token = localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
