@@ -25,6 +25,7 @@ import InfoPPDB from "./PPDB/InfoPPDB";
 import JadwalSeleksi from "./PPDB/JadwalSeleksi";
 import Foto from "./Galeri/Foto";
 import Vidio from "./Galeri/Vidio"
+import Berita from "./pages/Berita";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           <Route path="/ppdb/jadwal-seleksi" element={<JadwalSeleksi />} />
           <Route path="/galeri/foto" element={<Foto />} />
           <Route path="/galeri/vidio" element={<Vidio />} />
+          <Route path="/berita" element={<Berita />} />
 
 
         </Routes>
