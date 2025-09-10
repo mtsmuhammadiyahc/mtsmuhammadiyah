@@ -269,9 +269,10 @@ function CrudPages({ pageTitle }) {
 
     try {
       const token = localStorage.getItem("adminToken");
-      const res = await api.post(
-  `    /api/admin/${mapping.url}`,
-      dataToSend,
+      const res = await api.post(`/api/admin/${mapping.url}`, dataToSend, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "multipart/form-data",
     {
         headers: {
       Authorization: `Bearer ${token}`,
