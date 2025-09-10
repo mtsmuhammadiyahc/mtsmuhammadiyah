@@ -270,12 +270,12 @@ function CrudPages({ pageTitle }) {
     try {
       const token = localStorage.getItem("adminToken");
       const res = await api.post(
-        `/${mapping.url}`,   // ⬅️ cukup pakai relative url, instance sudah tahu BASE_URL
-        dataToSend,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
+  `/api/admin/${mapping.url}`,
+  dataToSend,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
           },
         }
       );
