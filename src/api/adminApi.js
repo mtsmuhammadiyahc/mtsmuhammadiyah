@@ -1,5 +1,6 @@
 // src/api/adminApi.js
-import axios from 'axios';
+import api from "../../api/adminApi";  // ✅ benar
+
 
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api/admin';
 
@@ -11,7 +12,7 @@ const instance = axios.create({
 
 // attach token automatically if exists
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('admin_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
