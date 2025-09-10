@@ -1,6 +1,6 @@
 // src/pages/CrudPages.js
 import React, { useState } from "react";
-import api from "../api/adminApi"; 
+import api from "../../api/adminApi";   
 
 function CrudPages({ pageTitle }) {
   const [formData, setFormData] = useState({});
