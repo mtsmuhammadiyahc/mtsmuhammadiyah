@@ -268,22 +268,21 @@ function CrudPages({ pageTitle }) {
     }
 
     try {
-      const token = localStorage.getItem("adminToken");
-      const res = await api.post(`/api/admin/${mapping.url}`, dataToSend, {
-  headers: {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "multipart/form-data",
+  const token = localStorage.getItem("adminToken");
+  const res = await api.post(
+    `/api/admin/${mapping.url}`,   // ✅ ga ada spasi, rapih
+    dataToSend,
     {
-        headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("✅ Berhasil:", res.data);
-    } catch (err) {
-      console.error("❌ Gagal:", err.response?.data || err.message);
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
     }
+  );
+  console.log("✅ Berhasil:", res.data);
+} catch (err) {
+  console.error("❌ Gagal:", err.response?.data || err.message);
+}
   };
 
   return (
