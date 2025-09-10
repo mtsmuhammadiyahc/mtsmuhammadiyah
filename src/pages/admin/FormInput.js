@@ -1,6 +1,6 @@
 // src/pages/admin/FormInput.js
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../../api/adminApi";  
 import "./FormInput.css"; // opsional kalau mau styling terpisah
 
 export default function FormInput() {
