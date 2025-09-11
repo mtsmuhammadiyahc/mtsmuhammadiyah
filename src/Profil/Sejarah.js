@@ -23,7 +23,7 @@ const Sejarah = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/profil`)
+      .get(`${process.env.REACT_APP_API_URL}/profil/sejarah`)
       .then((res) => {
         const result = parseProfilResponse(res);
         setData(result);
