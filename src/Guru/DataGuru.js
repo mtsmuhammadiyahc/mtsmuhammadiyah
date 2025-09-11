@@ -7,12 +7,10 @@ const DataGuru = () => {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/api/guru`)
       .then((res) => {
-        const onlyGuru = res.data.filter(
-          (item) => item.type === "Data Guru" // Sesuaikan field type di database
-        );
-        setGuru(onlyGuru);
+        console.log("✅ Respon API Guru:", res.data);
+        setGuru(res.data); // langsung array
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("❌ Error ambil data guru:", err));
   }, []);
 
   return (
@@ -20,15 +18,20 @@ const DataGuru = () => {
       <h1>Data Guru</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {guru.map((g, index) => (
-          <div key={index} style={{ border: "1px solid #ccc", padding: "10px", width: "200px" }}>
-            <img
-              src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
-              alt={g.nama}
-              style={{ width: "100%", height: "auto" }}
-            />
+          <div
+            key={index}
+            style={{ border: "1px solid #ccc", padding: "10px", width: "200px" }}
+          >
+            {g.foto && (
+              <img
+                src={`${process.env.REACT_APP_API_URL}/uploads/${g.foto}`}
+                alt={g.nama}
+                style={{ width: "100%", height: "auto" }}
+              />
+            )}
             <h3>{g.nama}</h3>
             <p>Jabatan: {g.jabatan}</p>
-            <p>Tahun Masuk: {g.tahun}</p>
+            <p>Mapel: {g.mapel}</p>
           </div>
         ))}
       </div>
