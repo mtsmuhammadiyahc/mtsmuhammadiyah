@@ -26,10 +26,13 @@ const Sejarah = () => {
       .get(`${process.env.REACT_APP_API_URL}/profil/sejarah`)
       .then((res) => {
         const result = parseProfilResponse(res);
-        setData(result);
-        console.log("✅ Data Sejarah:", result);
-      })
-      .catch((err) => console.error("❌ Gagal ambil data sejarah:", err));
+        if (!result || result.length === 0) {
+          console.log("⚠️ Data Sejarah belum ada");
+    }
+    setData(result);
+    console.log("✅ Data Sejarah:", result);
+  })
+  .catch((err) => console.error("❌ Gagal ambil data sejarah:", err));
   }, []);
 
   useEffect(() => {
