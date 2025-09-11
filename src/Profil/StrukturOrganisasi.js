@@ -7,13 +7,24 @@ import "./Profil.css";
 const Struktur = () => {
   const [data, setData] = useState([]);
 
+   const parseProfilResponse = (res, tipe) => {
+  if (Array.isArray(res.data)) {
+    return res.data.filter((item) => item.type === tipe);
+  } else if (res.data?.type === tipe) {
+    return [res.data]; // bungkus ke array
+  }
+  return [];
+};
+
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/profil")
+      .get(`${process.env.REACT_APP_API_URL}/profil/strukturorganisasi`)
       .then((res) => {
-        setData(res.data.filter((item) => item.type === "struktur"));
-      })
-      .catch((err) => console.error(err));
+      const result = parseProfilResponse(res, "struktur organisasi");
+      setData(result);
+      console.log("✅ Data Struktur Organisasi:", result);
+    })
+    .catch((err) => console.error("❌ Gagal ambil data visi-misi:", err));
   }, []);
 
   useEffect(() => {
