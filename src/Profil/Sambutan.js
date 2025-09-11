@@ -7,14 +7,25 @@ import "./Profil.css";
 const Sambutan = () => {
   const [data, setData] = useState([]);
 
+  const parseProfilResponse = (res, tipe) => {
+  if (Array.isArray(res.data)) {
+    return res.data.filter((item) => item.type === tipe);
+  } else if (res.data?.type === tipe) {
+    return [res.data]; // bungkus ke array
+  }
+  return [];
+};
+
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/profil")
+      .get(`${process.env.REACT_APP_API_URL}/profil/sambutan`)
       .then((res) => {
-        setData(res.data.filter((item) => item.type === "sambutan"));
-      })
-      .catch((err) => console.error(err));
-  }, []);
+      const result = parseProfilResponse(res, "sambutan");
+      setData(result);
+      console.log("✅ Data Sambutan:", result);
+    })
+    .catch((err) => console.error("❌ Gagal ambil data sambutan:", err));
+     }, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -35,7 +46,7 @@ const Sambutan = () => {
             <p>{item.content}</p>
             {item.image && (
               <img
-                src={`http://localhost:5001/uploads/${item.image}`}
+                src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
                 alt={item.title}
                 style={{
                   maxWidth: "100%",
