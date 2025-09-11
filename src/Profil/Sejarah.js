@@ -22,11 +22,21 @@ const Sejarah = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_ADMIN}/profil`)
-      .then((res) => {
-        setData(parseProfilResponse(res));
-      })
-      .catch((err) => console.error("Gagal ambil data sejarah:", err));
-  }, []);
+  .then((res) => {
+    let result = [];
+
+    if (Array.isArray(res.data?.data)) {
+      result = res.data.data.filter((item) => item.type === "sejarah");
+    } else if (Array.isArray(res.data)) {
+      result = res.data.filter((item) => item.type === "sejarah");
+    } else if (res.data && res.data.type === "sejarah") {
+      result = [res.data];
+    }
+
+    setData(result);
+    console.log("✅ Data Sejarah berhasil diambil:", result); // sekarang yang tampil array
+  })
+  .catch((err) => console.error("❌ Gagal ambil data sejarah:", err));
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
