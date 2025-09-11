@@ -5,38 +5,32 @@ const DataStaf = () => {
   const [staf, setStaf] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://mtsmuhcil-backend.onrender.com:5001/api/admin/guru")
+    axios.get(`${process.env.REACT_APP_API_URL}/api/staf`)
       .then((res) => {
-        const onlyStaf = res.data.filter(
-          (item) => item.type === "Data Staf" // Sesuaikan field type di database
-        );
-        setStaf(onlyStaf);
+        console.log("✅ Respon API Staf:", res.data);
+        setStaf(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("❌ Error ambil data staf:", err));
   }, []);
 
-    return (
+  return (
     <div>
       <h1>Data Staf</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        {staf.map((g, index) => (
+        {staf.map((s, index) => (
           <div
             key={index}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              width: "200px",
-            }}
+            style={{ border: "1px solid #ccc", padding: "10px", width: "200px" }}
           >
-            <img
-              src={`http://localhost:5001/uploads/${g.foto}`}
-              alt={g.nama}
-              style={{ width: "100%", height: "auto" }}
-            />
-            <h3>{g.nama}</h3>
-            <p>Jabatan: {g.jabatan}</p>
-            <p>Tahun Masuk: {g.tahun}</p>
+            {s.foto && (
+              <img
+                src={`${process.env.REACT_APP_API_URL}/uploads/${s.foto}`}
+                alt={s.nama}
+                style={{ width: "100%", height: "auto" }}
+              />
+            )}
+            <h3>{s.nama}</h3>
+            <p>Jabatan: {s.jabatan}</p>
           </div>
         ))}
       </div>
