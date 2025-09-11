@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Profil.css";
+import "./Sejarah.css";
 
 const Sejarah = () => {
   const [data, setData] = useState([]);
@@ -56,13 +56,7 @@ const Sejarah = () => {
               <img
                 src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
                 alt={item.title || "Sejarah"}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                  marginTop: "15px",
-                  borderRadius: "8px",
-                }}
-                data-aos="zoom-in"
+                className="sejarah-image"
               />
             )}
           </div>
