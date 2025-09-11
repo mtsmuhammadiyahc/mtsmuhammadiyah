@@ -6,10 +6,11 @@ import "./Profil.css";
 
 const Sejarah = () => {
   const [data, setData] = useState([]);
-
+const API_ADMIN = process.env.REACT_APP_API_ADMIN;
+const STATIC_URL = process.env.REACT_APP_BACKEND_STATIC;
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/profil")
+      .get(`${API_ADMIN}/profil`)
       .then((res) => {
         setData(res.data.filter((item) => item.type === "sejarah"));
       })
@@ -35,7 +36,7 @@ const Sejarah = () => {
             <p>{item.content}</p>
             {item.image && (
               <img
-                src={`http://localhost:5001/uploads/${item.image}`}
+                src={`${STATIC_URL}/uploads/${item.image}`}
                 alt={item.title}
                 style={{
                   maxWidth: "100%",
