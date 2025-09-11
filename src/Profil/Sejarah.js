@@ -6,32 +6,27 @@ import "./Profil.css";
 
 const Sejarah = () => {
   const [data, setData] = useState([]);
-const API_ADMIN = process.env.REACT_APP_API_ADMIN;
-const STATIC_URL = process.env.REACT_APP_BACKEND_STATIC;
+
+  // 🔹 Helper buat parse response
+  const parseProfilResponse = (res) => {
+    if (Array.isArray(res.data?.data)) {
+      return res.data.data.filter((item) => item.type === "sejarah");
+    } else if (Array.isArray(res.data)) {
+      return res.data.filter((item) => item.type === "sejarah");
+    } else if (res.data?.type === "sejarah") {
+      return [res.data];
+    }
+    return [];
+  };
+
   useEffect(() => {
-  axios
-    .get(`${process.env.REACT_APP_API_ADMIN}/profil`)
-    .then((res) => {
-      let result = [];
-
-      // kalau data ada di res.data.data (object wrapper)
-      if (Array.isArray(res.data.data)) {
-        result = res.data.data.filter((item) => item.type === "sejarah");
-      }
-      // kalau langsung array
-      else if (Array.isArray(res.data)) {
-        result = res.data.filter((item) => item.type === "sejarah");
-      }
-      // kalau single object
-      else if (res.data && res.data.type === "sejarah") {
-        result = [res.data];
-      }
-
-      setData(result);
-    })
-    .catch((err) => console.error("Gagal ambil data sejarah:", err));
-}, []);
-
+    axios
+      .get(`${process.env.REACT_APP_API_ADMIN}/profil`)
+      .then((res) => {
+        setData(parseProfilResponse(res));
+      })
+      .catch((err) => console.error("Gagal ambil data sejarah:", err));
+  }, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -52,13 +47,13 @@ const STATIC_URL = process.env.REACT_APP_BACKEND_STATIC;
             <p>{item.content}</p>
             {item.image && (
               <img
-                src={`${STATIC_URL}/uploads/${item.image}`}
+                src={`${process.env.REACT_APP_BACKEND_STATIC}uploads/${item.image}`}
                 alt={item.title}
                 style={{
                   maxWidth: "100%",
                   height: "auto",
                   marginTop: "15px",
-                  borderRadius: "8px"
+                  borderRadius: "8px",
                 }}
                 data-aos="zoom-in"
               />
