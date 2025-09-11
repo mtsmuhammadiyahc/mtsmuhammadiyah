@@ -7,8 +7,7 @@ import "./Profil.css";
 
 const Sejarah = () => {
   const [data, setData] = useState([]);
-  const API_URL = "https://be-production-d9fe.up.railway.app/api/admin/sejarah";
-  const UPLOADS_URL = "https://be-production-d9fe.up.railway.app/uploads/";
+  
 
   // 🔹 Helper: normalisasi respons API jadi array
   const parseProfilResponse = (res) => {
