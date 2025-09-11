@@ -15,7 +15,11 @@ function Berita() {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
-  const token = localStorage.getItem("token"); // token admin dari login
+  const token = localStorage.getItem("adminToken"); // token admin dari login
+  if (!token) {
+  window.location.href = "/admin/login";
+}
+
 
   // ambil data berita
   const fetchBerita = async () => {
