@@ -51,7 +51,7 @@ const Sejarah = () => {
             {item.content && <p>{item.content}</p>}
             {item.image && (
               <img
-                src={`${process.env.REACT_APP_BACKEND_STATIC}uploads/${item.image}`}
+                src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
                 alt={item.title || "Sejarah"}
                 style={{
                   maxWidth: "100%",
