@@ -7,9 +7,6 @@ import "./Profil.css";
 
 const Sejarah = () => {
   const [data, setData] = useState([]);
-  REACT_APP_API_URL=https://be-production-d9fe.up.railway.app/api/admin
-  REACT_APP_BACKEND_STATIC=https://be-production-d9fe.up.railway.app/
-
 
   // 🔹 Helper: normalisasi respons API jadi array
   const parseProfilResponse = (res) => {
@@ -18,7 +15,7 @@ const Sejarah = () => {
     } else if (Array.isArray(res.data)) {
       return res.data.filter((item) => item.type === "sejarah");
     } else if (res.data?.type === "sejarah") {
-      return [res.data]; // bungkus biar bisa .map()
+      return [res.data]; // bungkus supaya bisa .map()
     }
     return [];
   };
