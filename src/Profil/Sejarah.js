@@ -9,13 +9,29 @@ const Sejarah = () => {
 const API_ADMIN = process.env.REACT_APP_API_ADMIN;
 const STATIC_URL = process.env.REACT_APP_BACKEND_STATIC;
   useEffect(() => {
-    axios
-      .get(`${API_ADMIN}/profil`)
-      .then((res) => {
-        setData(res.data.filter((item) => item.type === "sejarah"));
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  axios
+    .get(`${process.env.REACT_APP_API_ADMIN}/profil`)
+    .then((res) => {
+      let result = [];
+
+      // kalau data ada di res.data.data (object wrapper)
+      if (Array.isArray(res.data.data)) {
+        result = res.data.data.filter((item) => item.type === "sejarah");
+      }
+      // kalau langsung array
+      else if (Array.isArray(res.data)) {
+        result = res.data.filter((item) => item.type === "sejarah");
+      }
+      // kalau single object
+      else if (res.data && res.data.type === "sejarah") {
+        result = [res.data];
+      }
+
+      setData(result);
+    })
+    .catch((err) => console.error("Gagal ambil data sejarah:", err));
+}, []);
+
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
