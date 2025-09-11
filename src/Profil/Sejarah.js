@@ -37,6 +37,7 @@ const Sejarah = () => {
     console.log("✅ Data Sejarah berhasil diambil:", result); // sekarang yang tampil array
   })
   .catch((err) => console.error("❌ Gagal ambil data sejarah:", err));
+    }, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
