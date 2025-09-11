@@ -5,7 +5,7 @@ const DataGuru = () => {
   const [guru, setGuru] = useState([]);
 
   useEffect(() => {
-    axios.get("${process.env.REACT_APP_API_URL}/guru/dataguru")
+    axios.get(`${process.env.REACT_APP_API_URL}/api/guru`)
       .then((res) => {
         const onlyGuru = res.data.filter(
           (item) => item.type === "Data Guru" // Sesuaikan field type di database
