@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = "https://be-production-d9fe.up.railway.app/api/admin/berita";
+const UPLOADS_URL = "https://be-production-d9fe.up.railway.app/uploads/";
+
 function Berita() {
   const [berita, setBerita] = useState([]);
   const [formData, setFormData] = useState({
@@ -17,7 +20,7 @@ function Berita() {
   // ambil data berita
   const fetchBerita = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/berita");
+      const res = await axios.get(API_URL);
       setBerita(res.data);
     } catch (err) {
       console.error("Gagal fetch berita:", err.message);
@@ -47,9 +50,9 @@ function Berita() {
       data.append("judul", formData.judul);
       data.append("penulis", formData.penulis);
       data.append("isi", formData.isi);
-      if (file) data.append("foto", file); // backend pakai "foto" utk cover
+      if (file) data.append("cover", file); // 🔹 sinkron ke schema "cover"
 
-      await axios.post("http://localhost:5000/api/admin/berita", data, {
+      await axios.post(API_URL, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -61,7 +64,7 @@ function Berita() {
       setPreview(null);
       fetchBerita();
     } catch (err) {
-      console.error("Gagal tambah berita:", err.message);
+      console.error("Gagal tambah berita:", err.response?.data || err.message);
     }
   };
 
@@ -69,7 +72,7 @@ function Berita() {
   const handleDelete = async (id) => {
     if (!window.confirm("Hapus berita ini?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/berita/${id}`, {
+      await axios.delete(`${API_URL}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchBerita();
@@ -132,7 +135,7 @@ function Berita() {
           <div key={item._id} className="p-4 border rounded shadow">
             {item.cover && (
               <img
-                src={`http://localhost:5000/uploads/${item.cover}`}
+                src={`${UPLOADS_URL}${item.cover}`}
                 alt={item.judul}
                 className="w-full h-40 object-cover mb-2 rounded"
               />
@@ -156,4 +159,3 @@ function Berita() {
 }
 
 export default Berita;
-
