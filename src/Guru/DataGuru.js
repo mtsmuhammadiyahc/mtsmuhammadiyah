@@ -5,7 +5,7 @@ const DataGuru = () => {
   const [guru, setGuru] = useState([]);
 
   useEffect(() => {
-    axios.get("https://mtsmuhcil-backend.onrender.com/api/admin/guru")
+    axios.get("${process.env.REACT_APP_API_URL}/guru/dataguru")
       .then((res) => {
         const onlyGuru = res.data.filter(
           (item) => item.type === "Data Guru" // Sesuaikan field type di database
@@ -22,7 +22,7 @@ const DataGuru = () => {
         {guru.map((g, index) => (
           <div key={index} style={{ border: "1px solid #ccc", padding: "10px", width: "200px" }}>
             <img
-              src={`http://localhost:5001/uploads/${g.foto}`}
+              src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
               alt={g.nama}
               style={{ width: "100%", height: "auto" }}
             />
