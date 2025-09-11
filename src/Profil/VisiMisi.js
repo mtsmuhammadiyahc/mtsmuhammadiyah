@@ -9,7 +9,7 @@ const VisiMisi = () => {
 
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/profil")
+      .get("${process.env.REACT_APP_API_URL}/profil/visi-misi")
       .then((res) => {
         setData(res.data.filter((item) => item.type === "visi-misi"));
       })
@@ -68,7 +68,7 @@ const VisiMisi = () => {
               {/* Gambar jika ada */}
               {item.image && (
                 <img
-                  src={`http://localhost:5001/uploads/${item.image}`}
+                  src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
                   alt={item.title}
                   style={{
                     maxWidth: "100%",
