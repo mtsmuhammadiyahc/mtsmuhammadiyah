@@ -7,13 +7,24 @@ import "./VisiMisi.css";
 const VisiMisi = () => {
   const [data, setData] = useState([]);
 
+  const parseProfilResponse = (res, tipe) => {
+  if (Array.isArray(res.data)) {
+    return res.data.filter((item) => item.type === tipe);
+  } else if (res.data?.type === tipe) {
+    return [res.data]; // bungkus ke array
+  }
+  return [];
+};
+
   useEffect(() => {
     axios
-      .get("${process.env.REACT_APP_API_URL}/profil/visi-misi")
+      .get(`${process.env.REACT_APP_API_URL}/profil/visi-misi`)
       .then((res) => {
-        setData(res.data.filter((item) => item.type === "visi-misi"));
-      })
-      .catch((err) => console.error(err));
+      const result = parseProfilResponse(res, "visi-misi");
+      setData(result);
+      console.log("✅ Data Visi Misi:", result);
+    })
+    .catch((err) => console.error("❌ Gagal ambil data visi-misi:", err));
   }, []);
 
   useEffect(() => {
