@@ -1,0 +1,26 @@
+.sejarah-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sejarah-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sejarah-content {
+  margin-bottom: 30px;
+}
+
+.sejarah-image {
+  max-width: 600px;   /* batas lebar gambar */
+  width: 100%;        /* biar responsif */
+  height: auto;       /* biar proporsional */
+  border-radius: 10px;
+  display: block;
+  margin: 15px auto;  /* posisi tengah */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
