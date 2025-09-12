@@ -23,7 +23,7 @@ const Sejarah = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/profil/sejarah`)
+      .get(`https://be-production-d9fe.up.railway.app/api/profil/sejarah`)
       .then((res) => {
         const result = parseProfilResponse(res);
         if (!result || result.length === 0) {
