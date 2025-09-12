@@ -5,7 +5,7 @@ const DataStaf = () => {
   const [staf, setStaf] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/staf`)
+    axios.get(`https://be-production-d9fe.up.railway.app/api/admin/staf`)
       .then((res) => {
         console.log("✅ Respon API Staf:", res.data);
         setStaf(res.data);
