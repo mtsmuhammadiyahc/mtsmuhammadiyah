@@ -6,7 +6,7 @@ const Testimoni = () => {
 
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/alumni")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/alumni")
       .then((res) => {
         const onlyTestimoni = res.data.filter((item) => item.type === "Testimoni");
         setTestimoni(onlyTestimoni);
