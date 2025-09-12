@@ -18,7 +18,7 @@ const Struktur = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/profil/strukturorganisasi`)
+      .get(`https://be-production-d9fe.up.railway.app/api/profil/strukturorganisasi`)
       .then((res) => {
       const result = parseProfilResponse(res, "struktur organisasi");
       setData(result);
