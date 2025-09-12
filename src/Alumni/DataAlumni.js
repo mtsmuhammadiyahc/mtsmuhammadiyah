@@ -6,7 +6,7 @@ const DataAlumni = () => {
 
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/alumni")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/alumni")
       .then((res) => {
         const onlyAlumni = res.data.filter(
           (item) => item.type === "Data Alumni"
