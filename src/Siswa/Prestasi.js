@@ -6,7 +6,7 @@ const Prestasi = () => {
 
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.com/api/admin/siswa")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/siswa")
       .then((res) => {
         const onlyPrestasi = res.data.filter(
           (item) => item.type === "Prestasi"
