@@ -6,7 +6,7 @@ const DataSiswa = () => {
 
   useEffect(() => {
     axios
-      .get("https://mtsmuhcil-backend.onrender.comapi/admin/siswa")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/siswa")
       .then((res) => {
         const onlySiswa = res.data.filter(
           (item) => item.type === "Data Siswa"
