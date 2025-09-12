@@ -7,7 +7,7 @@ const Foto = () => {
 
   useEffect(() => {
     axios
-      .get("https://be-production-d9fe.up.railway.app/api/galeri")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/galeri")
       .then((res) => {
         // 🔑 filter hanya yang tipe "foto"
         const onlyFoto = res.data.filter((item) => item.tipe === "foto");
