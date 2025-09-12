@@ -44,6 +44,7 @@ function CrudPages({ pageTitle }) {
               <option value="">-- Pilih Jenis Profil --</option>
               <option value="visi-misi">Visi & Misi</option>
               <option value="sejarah">Sejarah</option>
+              <option value="sambutan">Sambutan</option>
               <option value="struktur">Struktur Organisasi</option>
               <option value="fasilitas">Fasilitas</option>
             </select>
