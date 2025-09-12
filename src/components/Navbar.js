@@ -18,6 +18,7 @@ function Navbar() {
         { label: "Visi & Misi", path: "/profil/visi-misi" },
         { label: "Struktur Organisasi", path: "/profil/struktur-organisasi" },
         { label: "Fasilitas", path: "/profil/fasilitas" },
+        { label: "Sambutan", path: "/profil/sambutan" },
       ],
     },
     {
