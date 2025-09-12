@@ -34,7 +34,7 @@ function Navbar() {
       key: "galeri",
       sub: [
         { label: "Foto", path: "/galeri/foto" },
-        { label: "Video", path: "/galeri/video" },
+        { label: "Vidio", path: "/galeri/vidio" },
       ],
     },
     {
