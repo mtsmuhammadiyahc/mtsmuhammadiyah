@@ -7,7 +7,7 @@ const Vidio = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/admin/galeri?tipe=vidio")
+      .get("https://be-production-d9fe.up.railway.app/api/galeri")
       .then((res) => setVidios(res.data))
       .catch((err) => console.error(err));
   }, []);
