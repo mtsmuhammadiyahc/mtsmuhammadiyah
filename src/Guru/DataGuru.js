@@ -5,7 +5,7 @@ const DataGuru = () => {
   const [guru, setGuru] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/guru`)
+    axios.get(`https://be-production-d9fe.up.railway.app/api/admin/guru`)
       .then((res) => {
         console.log("✅ Respon API Guru:", res.data);
         setGuru(res.data); // langsung array
