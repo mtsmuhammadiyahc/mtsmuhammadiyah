@@ -18,7 +18,7 @@ const Fasilitas = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/profil/fasilitas`)
+      .get(`$https://be-production-d9fe.up.railway.app/api/profil/fasilitas`)
       .then((res) => {
       const result = parseProfilResponse(res, "fasilitas");
       setData(result);
