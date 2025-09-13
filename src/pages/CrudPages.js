@@ -31,6 +31,7 @@ function CrudPages({ pageTitle }) {
               <option value="Data Staf">Data Staf</option>
             </select>
             <input type="text" name="nama" placeholder="Nama" onChange={handleChange} required />
+            <input type="text" name="mapel" placeholder="Mata Pelajaran" onChange={handleChange} required />
             <input type="text" name="jabatan" placeholder="Jabatan" onChange={handleChange} required />
             <input type="number" name="tahun" placeholder="Tahun" onChange={handleChange} required />
             <input type="file" name="foto" onChange={handleFileChange} required />
