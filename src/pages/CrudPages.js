@@ -253,6 +253,7 @@ function CrudPages({ pageTitle }) {
   const endpointMap = {
     Profil: { url: "profil", fileField: "image" },
     Guru: { url: "guru", fileField: "foto" },
+    Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
     Alumni: { url: "alumni", fileField: "foto" },
     Berita: { url: "berita", fileField: "cover" },
@@ -263,6 +264,9 @@ function CrudPages({ pageTitle }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+     const mapping = endpointMap[pageTitle];
+  ...
+};
 
     const mapping = endpointMap[pageTitle];
     if (!mapping) {
