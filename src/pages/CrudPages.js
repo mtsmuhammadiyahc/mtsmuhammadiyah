@@ -264,10 +264,7 @@ function CrudPages({ pageTitle }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     const mapping = endpointMap[pageTitle];
-  ...
-};
-
+    
     const mapping = endpointMap[pageTitle];
     if (!mapping) {
       console.error(`❌ Endpoint untuk "${pageTitle}" tidak ditemukan.`);
