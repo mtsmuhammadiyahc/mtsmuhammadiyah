@@ -21,8 +21,6 @@ function CrudPages({ pageTitle }) {
   };
 
   const renderFields = () => {
-    switch (pageTitle) {
-      const renderFields = () => {
   switch (pageTitle) {
     // ========== Guru ==========
     case "Guru":
@@ -35,6 +33,7 @@ function CrudPages({ pageTitle }) {
           <input type="file" name="foto" onChange={handleFileChange} required />
         </>
       );
+      break;
 
     // ========== Staf ==========
     case "Staf":
@@ -47,6 +46,7 @@ function CrudPages({ pageTitle }) {
           <input type="file" name="foto" onChange={handleFileChange} required />
         </>
       );
+      break;
       
       case "Profil":
         return (
