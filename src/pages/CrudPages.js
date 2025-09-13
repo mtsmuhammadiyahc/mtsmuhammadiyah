@@ -22,21 +22,31 @@ function CrudPages({ pageTitle }) {
 
   const renderFields = () => {
     switch (pageTitle) {
-      case "Guru":
-        return (
-          <>
-            <select name="type" onChange={handleChange} required>
-              <option value="">-- Pilih Jenis Profil --</option>
-              <option value="Data Guru">Data Guru</option>
-              <option value="Data Staf">Data Staf</option>
-            </select>
-            <input type="text" name="nama" placeholder="Nama" onChange={handleChange} required />
-            <input type="text" name="mapel" placeholder="Mata Pelajaran" onChange={handleChange} required />
-            <input type="text" name="jabatan" placeholder="Jabatan" onChange={handleChange} required />
-            <input type="number" name="tahun" placeholder="Tahun" onChange={handleChange} required />
-            <input type="file" name="foto" onChange={handleFileChange} required />
-          </>
-        );
+      const renderFields = () => {
+  switch (pageTitle) {
+    // ========== Guru ==========
+    case "Guru":
+      return (
+        <>
+          <input type="text" name="nama" placeholder="Nama Guru" onChange={handleChange} required />
+          <input type="text" name="mapel" placeholder="Mata Pelajaran" onChange={handleChange} required />
+          <input type="text" name="jabatan" placeholder="Jabatan" onChange={handleChange} required />
+          <input type="number" name="tahun" placeholder="Tahun" onChange={handleChange} required />
+          <input type="file" name="foto" onChange={handleFileChange} required />
+        </>
+      );
+
+    // ========== Staf ==========
+    case "Staf":
+      return (
+        <>
+          <input type="text" name="nama" placeholder="Nama Staf" onChange={handleChange} required />
+          <input type="text" name="jobdesk" placeholder="Jobdesk" onChange={handleChange} required />
+          <input type="text" name="jabatan" placeholder="Jabatan" onChange={handleChange} required />
+          <input type="number" name="tahun" placeholder="Tahun" onChange={handleChange} required />
+          <input type="file" name="foto" onChange={handleFileChange} required />
+        </>
+      );
       
       case "Profil":
         return (
