@@ -9,6 +9,7 @@ function Dashboard() {
   const menuItems = [
     "Berita",
     "Guru",
+    "Staf",
     "Siswa",
     "Alumni",
     "Profil",
