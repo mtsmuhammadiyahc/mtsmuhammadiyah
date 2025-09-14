@@ -18,7 +18,7 @@ const Sambutan = () => {
 
   useEffect(() => {
     axios
-      .get("https://be-production-d9fe.up.railway.app/api/sambutan")
+      .get("https://be-production-d9fe.up.railway.app/api/profil/sambutan")
     .then((res) => {
       setData(Array.isArray(res.data) ? res.data : [res.data]);
       console.log("✅ Data Sambutan:", res.data);
