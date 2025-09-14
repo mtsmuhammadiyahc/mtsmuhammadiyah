@@ -17,11 +17,12 @@ const Sambutan = () => {
 };
 
   useEffect(() => {
-    axios
-      .get("https://be-production-d9fe.up.railway.app/api/profil/sambutan")
+   axios
+    .get(`https://be-production-d9fe.up.railway.app/api/profil/sambutan`)
     .then((res) => {
-      setData(Array.isArray(res.data) ? res.data : [res.data]);
-      console.log("✅ Data Sambutan:", res.data);
+      const result = parseProfilResponse(res, "sambutan");
+      setData(result);
+      console.log("✅ Data Sambutan:", result);
     })
     .catch((err) => console.error("❌ Gagal ambil data sambutan:", err));
 }, []);
