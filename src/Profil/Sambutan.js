@@ -18,14 +18,13 @@ const Sambutan = () => {
 
   useEffect(() => {
     axios
-      .get(`$https://be-production-d9fe.up.railway.app/api/profil/sambutan`)
-      .then((res) => {
-      const result = parseProfilResponse(res, "sambutan");
-      setData(result);
-      console.log("✅ Data Sambutan:", result);
+      .get("https://be-production-d9fe.up.railway.app/api/sambutan")
+    .then((res) => {
+      setData(Array.isArray(res.data) ? res.data : [res.data]);
+      console.log("✅ Data Sambutan:", res.data);
     })
     .catch((err) => console.error("❌ Gagal ambil data sambutan:", err));
-     }, []);
+}, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
