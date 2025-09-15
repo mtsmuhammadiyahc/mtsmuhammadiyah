@@ -67,7 +67,6 @@ function CrudPages({ pageTitle }) {
               <option value="visi-misi">Visi & Misi</option>
               <option value="sejarah">Sejarah</option>
               <option value="sambutan">Sambutan</option>
-              <option value="fasilitas">Fasilitas</option>
               <option value="struktur">Struktur Organisasi</option>
             </select>
             <input type="text" name="title" placeholder="Judul" onChange={handleChange} required />
