@@ -68,8 +68,8 @@ function CrudPages({ pageTitle }) {
     case "Fasilitas":
       return (
         <>
-          <input type="text" name="nama" placeholder="Judul" onChange={handleChange} required />
-          <input type="text" name="jobdesk" placeholder="Konten" onChange={handleChange} required />
+          <input type="text" name="nama" placeholder="Nama Fasilitas" onChange={handleChange} required />
+          <textarea name="deskripsi" placeholder="Deskripsi Fasilitas" onChange={handleChange} />
           <input type="file" name="foto" onChange={handleFileChange} required />
         </>
       );
@@ -262,6 +262,7 @@ function CrudPages({ pageTitle }) {
   // Mapping endpoint dan nama field file
   const endpointMap = {
     Profil: { url: "profil", fileField: "image" },
+    Fasilitas: { url: "fasilitas", fileField: "foto" }
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
