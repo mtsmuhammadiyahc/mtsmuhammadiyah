@@ -13,7 +13,7 @@ function Dashboard() {
     "Siswa",
     "Alumni",
     "Profil",
-    "Fasilitas"
+    "Fasilitas",
     "Galeri",
     "PPDB"
   ];
