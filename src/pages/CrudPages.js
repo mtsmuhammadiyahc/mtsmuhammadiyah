@@ -262,7 +262,7 @@ function CrudPages({ pageTitle }) {
   // Mapping endpoint dan nama field file
   const endpointMap = {
     Profil: { url: "profil", fileField: "image" },
-    Fasilitas: { url: "fasilitas", fileField: "foto" }
+    Fasilitas: { url: "fasilitas", fileField: "foto" },
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
