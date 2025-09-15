@@ -18,7 +18,7 @@ const Fasilitas = () => {
 
   useEffect(() => {
     axios
-      .get(`https://be-production-d9fe.up.railway.app/api/admin/profil/fasilitas`)
+      .get(`https://be-production-d9fe.up.railway.app/api/admin/fasilitas`)
       .then((res) => {
         setData(res.data); // langsung set array dari backend
         console.log("✅ Data Fasilitas:", res.data);
