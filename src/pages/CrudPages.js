@@ -57,13 +57,23 @@ function CrudPages({ pageTitle }) {
               <option value="sejarah">Sejarah</option>
               <option value="sambutan">Sambutan</option>
               <option value="struktur">Struktur Organisasi</option>
-              <option value="fasilitas">Fasilitas</option>
             </select>
             <input type="text" name="title" placeholder="Judul" onChange={handleChange} required />
             <textarea name="content" placeholder="Isi Konten" onChange={handleChange} required />
             <input type="file" name="image" onChange={handleFileChange} />
           </>
         );
+
+       // ========== Fasilitas ==========
+    case "Fasilitas":
+      return (
+        <>
+          <input type="text" name="nama" placeholder="Judul" onChange={handleChange} required />
+          <input type="text" name="jobdesk" placeholder="Konten" onChange={handleChange} required />
+          <input type="file" name="foto" onChange={handleFileChange} required />
+        </>
+      );
+      break;
         
       case "Siswa":
         return (
