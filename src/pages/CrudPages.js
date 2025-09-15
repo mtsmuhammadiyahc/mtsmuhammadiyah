@@ -47,6 +47,17 @@ function CrudPages({ pageTitle }) {
         </>
       );
       break;
+
+       // ========== Fasilitas ==========
+    case "Fasilitas":
+      return (
+        <>
+          <input type="text" name="nama" placeholder="Nama Fasilitas" onChange={handleChange} required />
+          <textarea name="deskripsi" placeholder="Deskripsi Fasilitas" onChange={handleChange} />
+          <input type="file" name="foto" onChange={handleFileChange} required />
+        </>
+      );
+      break;
       
       case "Profil":
         return (
@@ -64,16 +75,7 @@ function CrudPages({ pageTitle }) {
           </>
         );
 
-       // ========== Fasilitas ==========
-    case "Fasilitas":
-      return (
-        <>
-          <input type="text" name="nama" placeholder="Nama Fasilitas" onChange={handleChange} required />
-          <textarea name="deskripsi" placeholder="Deskripsi Fasilitas" onChange={handleChange} />
-          <input type="file" name="foto" onChange={handleFileChange} required />
-        </>
-      );
-      break;
+      
         
       case "Siswa":
         return (
