@@ -1,3 +1,4 @@
+// src/pages/Fasilitas.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
@@ -7,13 +8,10 @@ import "./Profil.css";
 const Fasilitas = () => {
   const [data, setData] = useState([]);
 
-  // Gunakan URL backend default jika REACT_APP_API_URL belum di-set
   const API_URL =
-    process.env.REACT_APP_API_URL ||
-    "https://be-production-d9fe.up.railway.app";
+    process.env.REACT_APP_API_URL || "https://be-production-d9fe.up.railway.app";
 
   useEffect(() => {
-    // Ambil data fasilitas dari backend
     axios
       .get(`${API_URL}/api/admin/fasilitas`)
       .then((res) => {
@@ -43,17 +41,17 @@ const Fasilitas = () => {
             data-aos="fade-up"
             data-aos-delay={index * 150}
           >
-            {/* Judul */}
-            <h2 className="profil-subtitle">{item.title}</h2>
+            {/* Nama Fasilitas */}
+            <h2 className="profil-subtitle">{item.nama}</h2>
 
             {/* Deskripsi */}
-            <p>{item.content}</p>
+            <p>{item.deskripsi}</p>
 
-            {/* Gambar */}
-            {item.image && (
+            {/* Foto */}
+            {item.foto && (
               <img
-                src={`${API_URL}/uploads/${item.image}`}
-                alt={item.title}
+                src={`${API_URL}/uploads/${item.foto}`}
+                alt={item.nama}
                 className="profil-image"
                 style={{
                   maxWidth: "100%",
