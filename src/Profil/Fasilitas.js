@@ -18,14 +18,13 @@ const Fasilitas = () => {
 
   useEffect(() => {
     axios
-      .get(`https://be-production-d9fe.up.railway.app/api/profil/fasilitas`)
-    .then((res) => {
-      const result = parseProfilResponse(res, "sambutan");
-      setData(result);
-      console.log("✅ Data Fasilitas:", result);
-    })
-    .catch((err) => console.error("❌ Gagal ambil data sambutan:", err));
-}, []);
+      .get(`https://be-production-d9fe.up.railway.app/api/admin/fasilitas`)
+      .then((res) => {
+        setData(res.data); // langsung set array dari backend
+        console.log("✅ Data Fasilitas:", res.data);
+      })
+      .catch((err) => console.error("❌ Gagal ambil data fasilitas:", err));
+  }, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
