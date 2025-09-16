@@ -4,7 +4,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VisiMisi.css";
 
-
 const VisiMisi = () => {
   const [data, setData] = useState([]);
 
@@ -32,9 +31,12 @@ const VisiMisi = () => {
             {/* Misi */}
             <h3>Misi</h3>
             <ol>
-              {item.misi.map((m, i) => (
-                <li key={i}>{m}</li>
-              ))}
+              {Array.isArray(item.misi)
+                ? item.misi.map((m, i) => <li key={i}>{m}</li>)
+                : item.misi
+                    ?.split(/[.,;]/) // pisah berdasarkan koma/titik/titik koma
+                    .filter((m) => m.trim() !== "")
+                    .map((m, i) => <li key={i}>{m.trim()}</li>)}
             </ol>
 
             {item.foto && (
