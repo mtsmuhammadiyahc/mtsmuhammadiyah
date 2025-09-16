@@ -60,33 +60,47 @@ function CrudPages({ pageTitle }) {
       break;
 
       
-       // ========== VisiMisi ==========
-    case "VisiMisi":
-      return (
+      // ========== VisiMisi ==========
+case "VisiMisi":
+  return (
     <>
+      {/* Input Visi */}
       <textarea
         name="visi"
         placeholder="Tuliskan Visi"
+        value={formData.visi || ""}   // ✅ kasih default value biar tidak error
         onChange={handleChange}
         required
       />
 
-      {/* Input Misi */}
+      {/* Input Misi (dinamis) */}
       {formData.misi?.map((m, idx) => (
-        <input
-          key={idx}
-          type="text"
-          name="misi"
-          placeholder={`Misi ${idx + 1}`}
-          value={m}
-          onChange={(e) => {
-            const newMisi = [...formData.misi];
-            newMisi[idx] = e.target.value;
-            setFormData({ ...formData, misi: newMisi });
-          }}
-        />
+        <div key={idx} style={{ display: "flex", gap: "8px", marginBottom: "8px" }}>
+          <input
+            type="text"
+            placeholder={`Misi ${idx + 1}`}
+            value={m}
+            onChange={(e) => {
+              const newMisi = [...formData.misi];
+              newMisi[idx] = e.target.value;
+              setFormData({ ...formData, misi: newMisi });
+            }}
+            required
+          />
+          {/* Tombol hapus per misi */}
+          <button
+            type="button"
+            onClick={() => {
+              const newMisi = formData.misi.filter((_, i) => i !== idx);
+              setFormData({ ...formData, misi: newMisi });
+            }}
+          >
+            ❌
+          </button>
+        </div>
       ))}
 
+      {/* Tambah misi baru */}
       <button
         type="button"
         onClick={() =>
@@ -99,9 +113,11 @@ function CrudPages({ pageTitle }) {
         ➕ Tambah Misi
       </button>
 
+      {/* Upload Gambar */}
       <input type="file" name="foto" onChange={handleFileChange} />
     </>
   );
+
       
       case "Profil":
         return (
