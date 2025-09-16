@@ -58,13 +58,24 @@ function CrudPages({ pageTitle }) {
         </>
       );
       break;
+
+      
+       // ========== VisiMisi ==========
+    case "VisiMisi":
+      return (
+        <>
+          <input type="text" name="nama" placeholder="Judul" onChange={handleChange} required />
+          <textarea name="deskripsi" placeholder="Deskripsi " onChange={handleChange} />
+          <input type="file" name="foto" onChange={handleFileChange} required />
+        </>
+      );
+      break;
       
       case "Profil":
         return (
           <>
             <select name="type" onChange={handleChange} required>
               <option value="">-- Pilih Jenis Profil --</option>
-              <option value="visi-misi">Visi & Misi</option>
               <option value="sejarah">Sejarah</option>
               <option value="sambutan">Sambutan</option>
               <option value="struktur">Struktur Organisasi</option>
