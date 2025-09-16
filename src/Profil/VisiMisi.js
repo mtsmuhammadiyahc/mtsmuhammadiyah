@@ -18,7 +18,7 @@ const VisiMisi = () => {
 
   useEffect(() => {
     axios
-      .get(`https://be-production-d9fe.up.railway.app/api/VisiMisi`)
+      .get(`https://be-production-d9fe.up.railway.app/api/admin/visimisi`)
       .then((res) => {
       const result = parseProfilResponse(res, "visi-misi");
       setData(result);
