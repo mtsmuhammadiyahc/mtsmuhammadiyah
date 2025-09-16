@@ -1,64 +1,59 @@
-.visimisi-container {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9fafb;
+/* Container utama */
+.visimisi-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.visimisi-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1e293b;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.visimisi-subtitle {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #475569;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.visimisi-content p {
+/* Input & Textarea */
+.visimisi-form input,
+.visimisi-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 1rem;
-  line-height: 1.8;
-  color: #334155;
-  margin-bottom: 10px;
+  background: #fafafa;
+  color: #333;
 }
 
-.visimisi-content ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  line-height: 1.8;
-  color: #334155;
+.visimisi-form textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
-@media (max-width: 768px) {
-  .visimisi-container {
-    padding: 15px;
-  }
-
-  .visimisi-title {
-    font-size: 1.5rem;
-  }
-
-  .visimisi-subtitle {
-    font-size: 1rem;
-  }
-
-  .visimisi-content p,
-  .visimisi-content ul {
-    font-size: 0.95rem;
-  }
+/* Fokus */
+.visimisi-form input:focus,
+.visimisi-form textarea:focus {
+  border-color: #1976d2;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(25, 118, 210, 0.5);
 }
 
-.visimisi-content ol {
-  padding-left: 20px;
-  line-height: 1.8;
-  color: #334155;
-  list-style-type: decimal;
+/* Tombol */
+.visimisi-form button {
+  padding: 10px 16px;
+  background: #1976d2;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.visimisi-form button:hover {
+  background: #125a9c;
+}
+
+/* File input */
+.visimisi-form input[type="file"] {
+  border: none;
+  padding: 0;
 }
