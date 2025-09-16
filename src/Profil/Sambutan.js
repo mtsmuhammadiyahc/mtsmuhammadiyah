@@ -2,66 +2,47 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Profil.css";
+import "./Sambutan.css";
 
 const Sambutan = () => {
-  const [data, setData] = useState([]);
-
-  const parseProfilResponse = (res, tipe) => {
-  if (Array.isArray(res.data)) {
-    return res.data.filter((item) => item.type === tipe);
-  } else if (res.data?.type === tipe) {
-    return [res.data]; // bungkus ke array
-  }
-  return [];
-};
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-   axios
-    .get(`https://be-production-d9fe.up.railway.app/api/profil/sambutan`)
-    .then((res) => {
-      const result = parseProfilResponse(res, "sambutan");
-      setData(result);
-      console.log("✅ Data Sambutan:", result);
-    })
-    .catch((err) => console.error("❌ Gagal ambil data sambutan:", err));
-}, []);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/admin/sambutan`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setData(res.data[0]); // ambil hanya 1 sambutan (karena biasanya cuma 1)
+        }
+      })
+      .catch((err) => console.error("❌ Gagal ambil data sambutan:", err));
+  }, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
+  if (!data) {
+    return <p>Belum ada sambutan.</p>;
+  }
+
   return (
-    <div className="profil-container" data-aos="fade-up">
-      <h1 className="profil-title">Sambutan</h1>
-      {data.length > 0 ? (
-        data.map((item, index) => (
-          <div
-            key={index}
-            className="profil-content"
-            data-aos="fade-up"
-            data-aos-delay={index * 150}
-          >
-            <h2 className="profil-subtitle">{item.title}</h2>
-            <p>{item.content}</p>
-            {item.image && (
-              <img
-                src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
-                alt={item.title}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                  marginTop: "15px",
-                  borderRadius: "8px"
-                }}
-                data-aos="zoom-in"
-              />
-            )}
-          </div>
-        ))
-      ) : (
-        <p>Belum ada data sambutan.</p>
-      )}
+    <div className="sambutan-container" data-aos="fade-up">
+      <h1 className="sambutan-title">{data.title}</h1>
+      <div className="sambutan-content">
+        {/* Gambar Sambutan */}
+        {data.image && (
+          <img
+            src={`${process.env.REACT_APP_API_URL}/uploads/${data.image}`}
+            alt={data.title}
+            className="sambutan-image"
+            data-aos="zoom-in"
+          />
+        )}
+
+        {/* Isi Sambutan */}
+        <p data-aos="fade-left">{data.content}</p>
+      </div>
     </div>
   );
 };
