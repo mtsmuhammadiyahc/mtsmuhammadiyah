@@ -115,7 +115,7 @@ function CrudPages({ pageTitle }) {
     </>
   );
 
-
+// ========== SAMBUTAN ==========
   case "Sambutan":
   return (
     <div>
@@ -205,7 +205,6 @@ function CrudPages({ pageTitle }) {
             <select name="type" onChange={handleChange} required>
               <option value="">-- Pilih Jenis Profil --</option>
               <option value="sejarah">Sejarah</option>
-              <option value="sambutan">Sambutan</option>
               <option value="struktur">Struktur Organisasi</option>
             </select>
             <input type="text" name="title" placeholder="Judul" onChange={handleChange} required />
