@@ -18,13 +18,13 @@ const VisiMisi = () => {
 
   useEffect(() => {
     axios
-      .get(`https://be-production-d9fe.up.railway.app/api/visi-misi`)
+      .get(`https://be-production-d9fe.up.railway.app/api/VisiMisi`)
       .then((res) => {
       const result = parseProfilResponse(res, "visi-misi");
       setData(result);
       console.log("✅ Data Visi Misi:", result);
     })
-    .catch((err) => console.error("❌ Gagal ambil data visi-misi:", err));
+    .catch((err) => console.error("❌ Gagal ambil data visimisi:", err));
   }, []);
 
   useEffect(() => {
