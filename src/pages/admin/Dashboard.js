@@ -14,6 +14,7 @@ function Dashboard() {
     "Alumni",
     "Profil",
     "Fasilitas",
+    "VisiMisi",
     "Galeri",
     "PPDB",
   ];
