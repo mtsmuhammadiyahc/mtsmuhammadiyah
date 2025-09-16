@@ -9,7 +9,7 @@ const Sambutan = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/admin/sambutan`)
+      .get(`https://be-production-d9fe.up.railway.app/api/admin/sambutan`)
       .then((res) => {
         if (res.data.length > 0) {
           setData(res.data[0]); // ambil hanya 1 sambutan (karena biasanya cuma 1)
