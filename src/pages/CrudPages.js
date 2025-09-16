@@ -114,6 +114,90 @@ function CrudPages({ pageTitle }) {
       <input type="file" name="foto" onChange={handleFileChange} />
     </>
   );
+
+
+  case "Sambutan":
+  return (
+    <div>
+      <h2>Kelola Sambutan</h2>
+
+      {/* Form Input Sambutan */}
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <input
+          type="text"
+          name="title"
+          placeholder="Judul Sambutan"
+          value={formData.title || ""}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="content"
+          placeholder="Isi Sambutan"
+          value={formData.content || ""}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="file"
+          name="image"
+          onChange={handleFileChange}
+        />
+
+        {preview && (
+          <img
+            src={preview}
+            alt="Preview"
+            style={{ width: "150px", marginTop: "10px" }}
+          />
+        )}
+
+        <button type="submit">{editingId ? "Update" : "Tambah"}</button>
+      </form>
+
+      {/* Tabel Data Sambutan */}
+      <h3>Daftar Sambutan</h3>
+      <table border="1" cellPadding="10">
+        <thead>
+          <tr>
+            <th>Judul</th>
+            <th>Isi</th>
+            <th>Gambar</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.length > 0 ? (
+            data.map((item) => (
+              <tr key={item._id}>
+                <td>{item.title}</td>
+                <td>{item.content}</td>
+                <td>
+                  {item.image ? (
+                    <img
+                      src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
+                      alt="Sambutan"
+                      style={{ width: "100px" }}
+                    />
+                  ) : (
+                    "Tidak ada"
+                  )}
+                </td>
+                <td>
+                  <button onClick={() => handleEdit(item)}>Edit</button>
+                  <button onClick={() => handleDelete(item._id)}>Hapus</button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">Belum ada data Sambutan</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
       
       case "Profil":
         return (
