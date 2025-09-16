@@ -61,64 +61,59 @@ function CrudPages({ pageTitle }) {
 
       
       // ========== VisiMisi ==========
-      
-      case "VisiMisi":
-        return (
-          <>
-            {/* Input Visi */}
-            <textarea
-              name="visi"
-              placeholder="Tuliskan Visi"
-              value={formData.visi || ""}   // ✅ kasih default value biar tidak error
-              onChange={handleChange}
-              required
-            />
-      
-            {/* Input Misi (dinamis) */}
-            {formData.misi?.map((m, idx) => (
-              <div key={idx} style={{ display: "flex", gap: "8px", marginBottom: "8px" }}>
-                <input
-                  type="text"
-                  placeholder={`Misi ${idx + 1}`}
-                  value={m}
-                  onChange={(e) => {
-                    const newMisi = [...formData.misi];
-                    newMisi[idx] = e.target.value;
-                    setFormData({ ...formData, misi: newMisi });
-                  }}
-                  required
-                />
-                {/* Tombol hapus per misi */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    const newMisi = formData.misi.filter((_, i) => i !== idx);
-                    setFormData({ ...formData, misi: newMisi });
-                  }}
-                >
-                  ❌
-                </button>
-              </div>
-            ))}
-      
-            {/* Tambah misi baru */}
-            <button
-              type="button"
-              onClick={() =>
-                setFormData({
-                  ...formData,
-                  misi: [...(formData.misi || []), ""],
-                })
-              }
-            >
-              ➕ Tambah Misi
-            </button>
-      
-            {/* Upload Gambar */}
-            <input type="file" name="foto" onChange={handleFileChange} />
-          </>
-        );
+      useEffect(() => {
+  if (pageTitle === "VisiMisi") {
+    setFormData({
+      visi: "",
+      misi: [""], // supaya ada minimal 1 input misi
+      foto: ""
+    });
+  }
+}, [pageTitle]);
+     case "VisiMisi":
+  return (
+    <>
+      {/* Input Visi */}
+      <textarea
+        name="visi"
+        placeholder="Tuliskan Visi"
+        value={formData.visi || ""}
+        onChange={handleChange}
+        required
+      />
 
+      {/* Input Misi */}
+      {formData.misi?.map((m, idx) => (
+        <input
+          key={idx}
+          type="text"
+          placeholder={`Misi ${idx + 1}`}
+          value={m}
+          onChange={(e) => {
+            const newMisi = [...formData.misi];
+            newMisi[idx] = e.target.value;
+            setFormData({ ...formData, misi: newMisi });
+          }}
+        />
+      ))}
+
+      {/* Tombol tambah misi */}
+      <button
+        type="button"
+        onClick={() =>
+          setFormData({
+            ...formData,
+            misi: [...(formData.misi || []), ""],
+          })
+        }
+      >
+        ➕ Tambah Misi
+      </button>
+
+      {/* Upload Foto */}
+      <input type="file" name="foto" onChange={handleFileChange} />
+    </>
+  );
       
       case "Profil":
         return (
