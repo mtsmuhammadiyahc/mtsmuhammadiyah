@@ -15,7 +15,7 @@ function Dashboard() {
     "Profil",
     "Fasilitas",
     "Galeri",
-    "PPDB"
+    "PPDB",
   ];
 
   return (
