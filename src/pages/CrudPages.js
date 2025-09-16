@@ -147,13 +147,46 @@ function CrudPages({ pageTitle }) {
     </>
   );
 
+
+// ========== SEJARAH ==========
+case "Sejarah":
+  return (
+    <>
+      {/* Judul Sejarah */}
+      <input
+        type="text"
+        name="title"
+        placeholder="Judul Sejarah"
+        value={formData.title || ""}
+        onChange={handleChange}
+        required
+      />
+
+      {/* Isi Sejarah */}
+      <textarea
+        name="content"
+        placeholder="Isi Sejarah"
+        value={formData.content || ""}
+        onChange={handleChange}
+        required
+      />
+
+      {/* Upload Foto Sejarah */}
+      <input
+        type="file"
+        name="image"
+        onChange={handleFileChange}
+      />
+    </>
+  );
+
+
       
       case "Profil":
         return (
           <>
             <select name="type" onChange={handleChange} required>
               <option value="">-- Pilih Jenis Profil --</option>
-              <option value="sejarah">Sejarah</option>
               <option value="struktur">Struktur Organisasi</option>
             </select>
             <input type="text" name="title" placeholder="Judul" onChange={handleChange} required />
@@ -354,6 +387,7 @@ function CrudPages({ pageTitle }) {
     Fasilitas: { url: "fasilitas", fileField: "foto" },
     VisiMisi: { url: "visimisi", fileField: "foto" },
     Sambutan: { url: "sambutan", fileField: "image" },
+    Sejarah: { url: "sejarah", fileField: "image" },
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
