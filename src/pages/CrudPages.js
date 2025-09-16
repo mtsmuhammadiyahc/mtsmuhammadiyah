@@ -63,13 +63,45 @@ function CrudPages({ pageTitle }) {
        // ========== VisiMisi ==========
     case "VisiMisi":
       return (
-        <>
-          <input type="text" name="nama" placeholder="Judul" onChange={handleChange} required />
-          <textarea name="deskripsi" placeholder="Deskripsi " onChange={handleChange} />
-          <input type="file" name="foto" onChange={handleFileChange} required />
-        </>
-      );
-      break;
+    <>
+      <textarea
+        name="visi"
+        placeholder="Tuliskan Visi"
+        onChange={handleChange}
+        required
+      />
+
+      {/* Input Misi */}
+      {formData.misi?.map((m, idx) => (
+        <input
+          key={idx}
+          type="text"
+          name="misi"
+          placeholder={`Misi ${idx + 1}`}
+          value={m}
+          onChange={(e) => {
+            const newMisi = [...formData.misi];
+            newMisi[idx] = e.target.value;
+            setFormData({ ...formData, misi: newMisi });
+          }}
+        />
+      ))}
+
+      <button
+        type="button"
+        onClick={() =>
+          setFormData({
+            ...formData,
+            misi: [...(formData.misi || []), ""],
+          })
+        }
+      >
+        ➕ Tambah Misi
+      </button>
+
+      <input type="file" name="foto" onChange={handleFileChange} />
+    </>
+  );
       
       case "Profil":
         return (
