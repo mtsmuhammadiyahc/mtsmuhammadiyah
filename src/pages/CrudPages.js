@@ -49,15 +49,6 @@ function CrudPages({ pageTitle }) {
       break;
 
        // ========== Fasilitas ==========
-    useEffect(() => {
-  if (pageTitle === "VisiMisi") {
-    setFormData({
-      visi: "",
-      misi: [""], // supaya ada minimal 1 input misi
-      foto: ""
-    });
-  }
-}, [pageTitle]);
     case "Fasilitas":
       return (
         <>
