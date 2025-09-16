@@ -353,6 +353,7 @@ function CrudPages({ pageTitle }) {
     Profil: { url: "profil", fileField: "image" },
     Fasilitas: { url: "fasilitas", fileField: "foto" },
     VisiMisi: { url: "visimisi", fileField: "foto" },
+    Sambutan: { url: "sambutan", fileField: "foto" },
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
