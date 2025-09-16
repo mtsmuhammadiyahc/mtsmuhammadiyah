@@ -6,64 +6,44 @@ import "aos/dist/aos.css";
 import "./Sejarah.css";
 
 const Sejarah = () => {
-  const [data, setData] = useState([]);
-  
-
-  // 🔹 Helper: normalisasi respons API jadi array
-  const parseProfilResponse = (res) => {
-    if (Array.isArray(res.data?.data)) {
-      return res.data.data.filter((item) => item.type === "sejarah");
-    } else if (Array.isArray(res.data)) {
-      return res.data.filter((item) => item.type === "sejarah");
-    } else if (res.data?.type === "sejarah") {
-      return [res.data]; // bungkus supaya bisa .map()
-    }
-    return [];
-  };
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`https://be-production-d9fe.up.railway.app/api/profil/sejarah`)
+      .get(`https://be-production-d9fe.up.railway.app/api/admin/sejarah`)
       .then((res) => {
-        const result = parseProfilResponse(res);
-        if (!result || result.length === 0) {
-          console.log("⚠️ Data Sejarah belum ada");
-    }
-    setData(result);
-    console.log("✅ Data Sejarah:", result);
-  })
-  .catch((err) => console.error("❌ Gagal ambil data sejarah:", err));
+        if (res.data.length > 0) {
+          setData(res.data[0]); // ambil hanya 1 sejarah (karena biasanya cuma 1)
+        }
+      })
+      .catch((err) => console.error("❌ Gagal ambil data sejarah:", err));
   }, []);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
+  if (!data) {
+    return <p>Belum ada sejarah.</p>;
+  }
+
   return (
-    <div className="profil-container" data-aos="fade-up">
-      <h1 className="profil-title">Sejarah</h1>
-      {data.length > 0 ? (
-        data.map((item, index) => (
-          <div
-            key={item._id || index}
-            className="profil-content"
-            data-aos="fade-up"
-            data-aos-delay={index * 150}
-          >
-            {item.title && <h2 className="profil-subtitle">{item.title}</h2>}
-            {item.content && <p>{item.content}</p>}
-            {item.image && (
-              <img
-                src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
-                alt={item.title || "Sejarah"}
-                className="sejarah-image"
-              />
-            )}
-          </div>
-        ))
-      ) : (
-        <p>Belum ada data sejarah.</p>
-      )}
+    <div className="sejarah-container" data-aos="fade-up">
+      <h1 className="sejarah-title">{data.title}</h1>
+      <div className="sejarah-content">
+        {/* Gambar sejarah */}
+        {data.image && (
+          <img
+            src={`${process.env.REACT_APP_API_URL}/uploads/${data.image}`}
+            alt={data.title}
+            className="sejarah-image"
+            data-aos="zoom-in"
+          />
+        )}
+
+        {/* Isi sejarah */}
+        <p data-aos="fade-left">{data.content}</p>
+      </div>
     </div>
   );
 };
