@@ -16,6 +16,7 @@ function Dashboard() {
     "Fasilitas",
     "VisiMisi",
     "Sambutan",
+    "Sejarah",
     "Galeri",
     "PPDB",
   ];
