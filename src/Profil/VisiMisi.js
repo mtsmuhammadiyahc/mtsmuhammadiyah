@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VisiMisi.css";
 
-onst VisiMisi = () => {
+const VisiMisi = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
