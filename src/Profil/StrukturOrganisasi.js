@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Profil.css";
+import "./StrukturOrganisasi.css";
 
 const StrukturOrganisasi = () => {
   const [data, setData] = useState([]);
