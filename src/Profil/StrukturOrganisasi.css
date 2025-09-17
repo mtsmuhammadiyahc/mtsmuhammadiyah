@@ -9,8 +9,34 @@
   font-weight: bold;
 }
 
+.struktur-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* ✅ grid otomatis */
+  gap: 30px;
+  justify-items: center; /* biar item rata tengah di setiap kolom */
+}
+
 .struktur-item {
-  margin-bottom: 30px;
+  text-align: center;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  width: 200px; /* ✅ biar semua kotak ukurannya konsisten */
+}
+
+.struktur-foto {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.struktur-item:hover {
+  transform: translateY(-5px);
 }
 
 .struktur-foto {
