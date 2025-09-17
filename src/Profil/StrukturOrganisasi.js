@@ -22,31 +22,29 @@ const StrukturOrganisasi = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  return (
-    <div className="profil-container" data-aos="fade-up">
-      <h1 className="profil-title">Struktur Organisasi</h1>
-
+   return (
+    <div className="struktur-container" data-aos="fade-up">
+      <h1 className="struktur-title">Struktur Organisasi</h1>
       {data.length > 0 ? (
-        <div className="struktur-grid">
-          {data.map((item, index) => (
-            <div
-              key={item._id || index}
-              className="struktur-card"
-              data-aos="fade-up"
-              data-aos-delay={index * 150}
-            >
-              {item.image && (
-                <img
-                  src={`https://be-production-d9fe.up.railway.app/uploads/${item.image}`}
-                  alt={item.nama}
-                  className="struktur-img"
-                />
-              )}
-              <h2 className="struktur-nama">{item.nama}</h2>
-              <p className="struktur-jabatan">{item.jabatan}</p>
-            </div>
-          ))}
-        </div>
+        data.map((item, index) => (
+          <div
+            key={index}
+            className="struktur-item"
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+          >
+            <h2 className="struktur-nama">{item.nama}</h2>
+            <p className="struktur-jabatan">{item.jabatan}</p>
+            {item.image && (
+              <img
+                src={`https://be-production-d9fe.up.railway.app/uploads/${item.image}`}
+                alt={item.nama}
+                className="struktur-image"
+                data-aos="zoom-in"
+              />
+            )}
+          </div>
+        ))
       ) : (
         <p>Belum ada data struktur organisasi.</p>
       )}
