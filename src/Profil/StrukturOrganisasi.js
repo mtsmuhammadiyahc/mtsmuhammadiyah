@@ -10,7 +10,7 @@ const StrukturOrganisasi = () => {
 
   useEffect(() => {
     axios
-      .get("https://be-production-d9fe.up.railway.app/api/admin/struktur")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/strukturorganisasi")
       .then((res) => {
         setData(res.data);
         console.log("✅ Data Struktur Organisasi:", res.data);
