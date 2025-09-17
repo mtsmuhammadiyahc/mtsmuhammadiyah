@@ -181,22 +181,45 @@ case "Sejarah":
   );
 
 
-      
-      case "Profil":
-        return (
-          <>
-            <select name="type" onChange={handleChange} required>
-              <option value="">-- Pilih Jenis Profil --</option>
-              <option value="struktur">Struktur Organisasi</option>
-            </select>
-            <input type="text" name="title" placeholder="Judul" onChange={handleChange} required />
-            <textarea name="content" placeholder="Isi Konten" onChange={handleChange} required />
-            <input type="file" name="image" onChange={handleFileChange} />
-          </>
-        );
 
-      
-        
+// ========== STRUKTUR ORGANISASI ==========
+case "StrukturOrganisasi":
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Nama</label>
+        <input
+          type="text"
+          name="nama"
+          value={formData.nama || ""}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      <div>
+        <label>Jabatan</label>
+        <input
+          type="text"
+          name="jabatan"
+          value={formData.jabatan || ""}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      <div>
+        <label>Foto</label>
+        <input type="file" onChange={handleFileChange} />
+        {preview && <img src={preview} alt="preview" width="100" />}
+      </div>
+
+      <button type="submit">Simpan</button>
+    </form>
+  );
+
+
+      // ========== SISWA ==========  
       case "Siswa":
         return (
           <>
@@ -212,6 +235,8 @@ case "Sejarah":
           </>
         );
 
+
+         // ========== ALUMNI ==========
       case "Alumni":
         return (
           <>
