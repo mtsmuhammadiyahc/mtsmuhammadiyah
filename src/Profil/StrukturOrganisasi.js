@@ -37,19 +37,18 @@ const StrukturOrganisasi = () => {
             <p className="struktur-jabatan">{item.jabatan}</p>
             {item.image && (
               <img
-                <img
-                  src={`https://be-production-d9fe.up.railway.app/uploads/${item.image}`}
-                  alt={item.nama}
-                  style={{
-                    width: "150px",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                    marginTop: "10px",
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-                  }}
-                />
-              )}
+                src={`https://be-production-d9fe.up.railway.app/uploads/${item.image}`}
+                alt={item.nama}
+                style={{
+                  width: "150px",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  marginTop: "10px",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                }}
+              />
+            )}
           </div>
         ))
       ) : (
