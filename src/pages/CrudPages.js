@@ -413,6 +413,7 @@ case "StrukturOrganisasi":
     VisiMisi: { url: "visimisi", fileField: "foto" },
     Sambutan: { url: "sambutan", fileField: "image" },
     Sejarah: { url: "sejarah", fileField: "image" },
+    StrukturOrganisasi: { url: "strukturorganisasi", fileField: "image" },
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
