@@ -39,10 +39,15 @@ const StrukturOrganisasi = () => {
               <img
                 src={`https://be-production-d9fe.up.railway.app/uploads/${item.image}`}
                 alt={item.nama}
-                className="struktur-image"
-                data-aos="zoom-in"
-              />
-            )}
+                style={{
+                  width: "150px",         // lebar pas foto
+                  height: "200px",        // tinggi pas foto
+                  objectFit: "cover",     // supaya rapi, tidak gepeng
+                  borderRadius: "8px",    // sudut melengkung
+                  marginTop: "10px",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.2)" // biar ada efek
+                )}
+              />  
           </div>
         ))
       ) : (
