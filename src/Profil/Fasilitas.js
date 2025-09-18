@@ -31,22 +31,23 @@ const Fasilitas = () => {
   }, []);
 
   return (
-    <div className="profil-container" data-aos="fade-up">
-      <h1 className="profil-title">Fasilitas</h1>
+   <div className="profil-container" data-aos="fade-up">
+    <h1 className="profil-title">Fasilitas</h1>
+    <p className="profil-subtitle">
+      Fasilitas dari STMIK Syaikh Zainuddin NW Anjani
+    </p>
 
-      {data.length > 0 ? (
-        data.map((item, index) => (
+    {data.length > 0 ? (
+      <div className="profil-grid">
+        {data.map((item, index) => (
           <div
             key={item._id || index}
             className="profil-content"
             data-aos="fade-up"
             data-aos-delay={index * 150}
           >
-            {/* Nama Fasilitas */}
-            <h2 className="profil-subtitle">{item.nama}</h2>
-
-            {/* Deskripsi */}
-            <p>{item.deskripsi}</p>
+            {/* Label hijau */}
+            <div className="profil-label">{item.nama}</div>
 
             {/* Foto */}
             {item.foto && (
@@ -54,20 +55,22 @@ const Fasilitas = () => {
                 src={`${API_URL}/uploads/${item.foto}`}
                 alt={item.nama}
                 className="profil-image"
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                  marginTop: "15px",
-                  borderRadius: "8px",
-                }}
                 data-aos="zoom-in"
               />
             )}
+
+            {/* Deskripsi */}
+            {item.deskripsi && (
+              <div className="profil-description">{item.deskripsi}</div>
+            )}
           </div>
-        ))
-      ) : (
-        <p>Belum ada data fasilitas.</p>
-      )}
+        ))}
+      </div>
+    ) : (
+      <p>Belum ada data fasilitas.</p>
+    )}
+  </div>
+);
     </div>
   );
 };
