@@ -30,11 +30,12 @@ const Fasilitas = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
+  
   return (
-   <div className="profil-container" data-aos="fade-up">
+  <div className="profil-container" data-aos="fade-up">
     <h1 className="profil-title">Fasilitas</h1>
     <p className="profil-subtitle">
-      Fasilitas dari STMIK Syaikh Zainuddin NW Anjani
+      Fasilitas dari Mts Muhammadiyah 
     </p>
 
     {data.length > 0 ? (
@@ -71,8 +72,8 @@ const Fasilitas = () => {
     )}
   </div>
 );
-    </div>
-  );
 };
+
+
 
 export default Fasilitas;
