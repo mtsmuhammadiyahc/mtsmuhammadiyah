@@ -46,7 +46,7 @@ function App() {
           <Route path="/guru/data-staf" element={<DataStaf />} />
           <Route path="/profil/visi-misi" element={<VisiMisi />} />
           <Route path="/profil/fasilitas" element={<Fasilitas />} />
-          <Route path="/profil/fasilitas-detail" element={<FasilitasDetail />} />
+          <Route path="/profil/fasilitas/:id" element={<FasilitasDetail />} />
           <Route path="/profil/sejarah" element={<Sejarah />} />
           <Route path="/profil/sambutan" element={<Sambutan />} />
           <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
