@@ -33,10 +33,8 @@ const Fasilitas = () => {
   
   return (
   <div className="profil-container" data-aos="fade-up">
-    <h1 className="profil-title">Fasilitas</h1>
-    <p className="profil-subtitle">
-      Fasilitas dari Mts Muhammadiyah 
-    </p>
+    <h1 className="profil-title">Fasilitas Mts Muhammadiyah</h1>
+    
 
     {data.length > 0 ? (
       <div className="profil-grid">
