@@ -21,7 +21,6 @@ const Fasilitas = () => {
         } else {
           setData([]);
         }
-        console.log("✅ Data Fasilitas:", res.data);
       })
       .catch((err) => console.error("❌ Gagal ambil data fasilitas:", err));
   }, [API_URL]);
@@ -37,32 +36,22 @@ const Fasilitas = () => {
       {data.length > 0 ? (
         <div className="profil-grid">
           {data.map((item, index) => (
-            <div
+            <Link
               key={item._id || index}
-              className="profil-content"
+              to={`/profil/fasilitas/${item._id}`}
+              className="profil-card"
               data-aos="fade-up"
               data-aos-delay={index * 150}
             >
-              {/* 🔹 Link bungkus semua card */}
-              <Link to={`/profil/fasilitas/${item._id}`} className="profil-link">
-                <div className="profil-label">{item.nama}</div>
-
-                {/* Foto */}
-                {item.foto && (
-                  <img
-                    src={`${API_URL}/uploads/${item.foto}`}
-                    alt={item.nama}
-                    className="profil-image"
-                    data-aos="zoom-in"
-                  />
-                )}
-
-                {/* Deskripsi */}
-                {item.deskripsi && (
-                  <div className="profil-description">{item.deskripsi}</div>
-                )}
-              </Link> {/* ✅ ini yang kemarin kurang */}
-            </div>
+              {item.foto && (
+                <img
+                  src={`${API_URL}/uploads/${item.foto}`}
+                  alt={item.nama}
+                  className="profil-image"
+                />
+              )}
+              <div className="profil-label">{item.nama}</div>
+            </Link>
           ))}
         </div>
       ) : (
