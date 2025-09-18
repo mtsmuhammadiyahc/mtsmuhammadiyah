@@ -1,5 +1,6 @@
 // src/pages/Fasilitas.js
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -45,8 +46,9 @@ const Fasilitas = () => {
             data-aos="fade-up"
             data-aos-delay={index * 150}
           >
-            {/* Label hijau */}
-            <div className="profil-label">{item.nama}</div>
+            {/* 🔹 Link bungkus semua card */}
+              <Link to={`/profil/fasilitas/${item._id}`} className="profil-link">
+                <div className="profil-label">{item.nama}</div>
 
             {/* Foto */}
             {item.foto && (
