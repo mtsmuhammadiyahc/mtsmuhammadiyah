@@ -13,6 +13,7 @@ import DataGuru from "./Guru/DataGuru"; //
 import DataStaf from "./Guru/DataStaf"; // 
 import VisiMisi from "./Profil/VisiMisi";
 import Fasilitas from "./Profil/Fasilitas";
+import Fasilitas from "./Profil/FasilitasDetail";
 import Sejarah from "./Profil/Sejarah";
 import Sambutan from "./Profil/Sambutan";
 import StrukturOrganisasi from "./Profil/StrukturOrganisasi";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/guru/data-staf" element={<DataStaf />} />
           <Route path="/profil/visi-misi" element={<VisiMisi />} />
           <Route path="/profil/fasilitas" element={<Fasilitas />} />
+          <Route path="/profil/fasilitas" element={<FasilitasDetail />} />
           <Route path="/profil/sejarah" element={<Sejarah />} />
           <Route path="/profil/sambutan" element={<Sambutan />} />
           <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
