@@ -6,7 +6,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Fasilitas.css";
 
-
 const Fasilitas = () => {
   const [data, setData] = useState([]);
 
@@ -31,49 +30,46 @@ const Fasilitas = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  
   return (
-  <div className="profil-container" data-aos="fade-up">
-    <h1 className="profil-title">Fasilitas Mts Muhammadiyah</h1>
-    
+    <div className="profil-container" data-aos="fade-up">
+      <h1 className="profil-title">Fasilitas Mts Muhammadiyah</h1>
 
-    {data.length > 0 ? (
-      <div className="profil-grid">
-        {data.map((item, index) => (
-          <div
-            key={item._id || index}
-            className="profil-content"
-            data-aos="fade-up"
-            data-aos-delay={index * 150}
-          >
-            {/* 🔹 Link bungkus semua card */}
+      {data.length > 0 ? (
+        <div className="profil-grid">
+          {data.map((item, index) => (
+            <div
+              key={item._id || index}
+              className="profil-content"
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
+            >
+              {/* 🔹 Link bungkus semua card */}
               <Link to={`/profil/fasilitas/${item._id}`} className="profil-link">
                 <div className="profil-label">{item.nama}</div>
 
-            {/* Foto */}
-            {item.foto && (
-              <img
-                src={`${API_URL}/uploads/${item.foto}`}
-                alt={item.nama}
-                className="profil-image"
-                data-aos="zoom-in"
-              />
-            )}
+                {/* Foto */}
+                {item.foto && (
+                  <img
+                    src={`${API_URL}/uploads/${item.foto}`}
+                    alt={item.nama}
+                    className="profil-image"
+                    data-aos="zoom-in"
+                  />
+                )}
 
-            {/* Deskripsi */}
-            {item.deskripsi && (
-              <div className="profil-description">{item.deskripsi}</div>
-            )}
-          </div>
-        ))}
-      </div>
-    ) : (
-      <p>Belum ada data fasilitas.</p>
-    )}
-  </div>
-);
+                {/* Deskripsi */}
+                {item.deskripsi && (
+                  <div className="profil-description">{item.deskripsi}</div>
+                )}
+              </Link> {/* ✅ ini yang kemarin kurang */}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Belum ada data fasilitas.</p>
+      )}
+    </div>
+  );
 };
-
-
 
 export default Fasilitas;
