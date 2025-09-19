@@ -12,7 +12,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import DataGuru from "./Guru/DataGuru"; // 
 import DataStaf from "./Guru/DataStaf"; // 
 import VisiMisi from "./Profil/VisiMisi";
-import Fasilitas from "./Profil/Fasilitas";
+import PrestasiSiswa from "./PrestasiSiswa";
 import FasilitasDetail from "./Profil/FasilitasDetail";
 import Sejarah from "./Profil/Sejarah";
 import Sambutan from "./Profil/Sambutan";
@@ -51,7 +51,7 @@ function App() {
           <Route path="/profil/sambutan" element={<Sambutan />} />
           <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
           <Route path="/siswa/siswa" element={<Siswa />} />
-          <Route path="/siswa/prestasi" element={<Prestasi />} />
+          <Route path="/siswa/prestasi-siswa" element={<PrestasiSiswa />} />
           <Route path="/alumni/data-alumni" element={<DataAlumni />} />
           <Route path="/alumni/testimoni" element={<Testimoni />} />
           <Route path="/ppdb/formulir" element={<FormulirPPDB />} />
