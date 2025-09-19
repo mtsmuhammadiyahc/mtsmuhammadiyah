@@ -6,16 +6,13 @@ const Siswa = () => {
   const [siswa, setSiswa] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://be-production-d9fe.up.railway.app/api/admin/siswa")
-      .then((res) => {
-        const onlySiswa = res.data.filter(
-          (item) => item.type === "Data Siswa"
-        );
-        setSiswa(onlySiswa);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  axios
+    .get("https://be-production-d9fe.up.railway.app/api/admin/siswa")
+    .then((res) => {
+      setSiswa(res.data); // langsung isi data siswa
+    })
+    .catch((err) => console.error(err));
+}, []);
 
   return (
     <div>
