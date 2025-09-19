@@ -11,7 +11,7 @@ function Dashboard() {
     "Guru",
     "Staf",
     "Siswa",
-    "PrestasiSiswa",
+    "Prestasi",
     "Alumni",
     "Profil",
     "Fasilitas",
