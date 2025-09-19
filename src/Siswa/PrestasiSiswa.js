@@ -7,9 +7,9 @@ const PrestasiSiswa = () => {
 
   useEffect(() => {
     axios
-      .get("https://be-production-d9fe.up.railway.app/api/admin/prestasi-siswa")
+      .get("https://be-production-d9fe.up.railway.app/api/admin/prestasisiswa") // ✅ tanpa tanda "-"
       .then((res) => setPrestasi(res.data))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("Gagal fetch prestasi:", err));
   }, []);
 
   return (
@@ -20,7 +20,7 @@ const PrestasiSiswa = () => {
           <div key={index} className="prestasi-card">
             {p.sertifikat && (
               <img
-                src={`https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${p.sertifikat}`}
+                src={`https://be-production-d9fe.up.railway.app/uploads/prestasisiswa/${p.sertifikat}`} // ✅ folder sesuai backend
                 alt={p.namaPrestasi}
                 className="prestasi-img"
               />
@@ -28,7 +28,11 @@ const PrestasiSiswa = () => {
             <h3>{p.namaPrestasi}</h3>
             <p><strong>Tingkat:</strong> {p.tingkat}</p>
             <p><strong>Tahun:</strong> {p.tahun}</p>
-            <p><strong>Siswa:</strong> {p.siswaId?.nama} ({p.siswaId?.nis})</p>
+            {p.siswaId ? (
+              <p><strong>Siswa:</strong> {p.siswaId.nama} ({p.siswaId.nis})</p>
+            ) : (
+              <p><strong>Siswa:</strong> -</p>
+            )}
             <p>{p.keterangan}</p>
           </div>
         ))}
