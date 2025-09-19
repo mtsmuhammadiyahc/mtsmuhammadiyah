@@ -7,7 +7,7 @@ const PrestasiSiswa = () => {
 
   useEffect(() => {
     axios
-      .get("https://be-production-d9fe.up.railway.app/api/admin/prestasi-siswa") // ✅ tanpa tanda "-"
+      .get("https://be-production-d9fe.up.railway.app/api/admin/prestasi-siswa") 
       .then((res) => setPrestasi(res.data))
       .catch((err) => console.error("Gagal fetch prestasi:", err));
   }, []);
