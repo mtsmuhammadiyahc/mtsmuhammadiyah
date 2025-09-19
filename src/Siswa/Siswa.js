@@ -58,4 +58,4 @@ const DataSiswa = () => {
 };
 
 
-export default DataSiswa;
+export default Siswa;
