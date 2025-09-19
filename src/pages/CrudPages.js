@@ -276,16 +276,6 @@ case "StrukturOrganisasi":
 case "PrestasiSiswa":
   return (
     <>
-      {/* Pilih Siswa (dropdown ambil dari backend) */}
-      <select name="siswaId" onChange={handleChange} required>
-        <option value="">-- Pilih Siswa --</option>
-        {dataSiswa && dataSiswa.map((s) => (
-          <option key={s._id} value={s._id}>
-            {s.nama} ({s.nis})
-          </option>
-        ))}
-      </select>
-
       <input
         type="text"
         name="namaPrestasi"
