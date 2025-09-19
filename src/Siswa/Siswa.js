@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Siswa.css";
 
-const DataSiswa = () => {
+const Siswa = () => {
   const [siswa, setSiswa] = useState([]);
 
   useEffect(() => {
@@ -12,12 +12,12 @@ const DataSiswa = () => {
         const onlySiswa = res.data.filter(
           (item) => item.type === "Data Siswa"
         );
-        setSiswa(onlySiswa); // ✅ huruf besar benar
+        setSiswa(onlySiswa);
       })
       .catch((err) => console.error(err));
   }, []);
 
-   return (
+  return (
     <div>
       <h1>Data Siswa</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
@@ -56,6 +56,5 @@ const DataSiswa = () => {
     </div>
   );
 };
-
 
 export default Siswa;
