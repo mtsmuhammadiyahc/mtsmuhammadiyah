@@ -272,12 +272,58 @@ case "StrukturOrganisasi":
     );
 
 
+// ========== PRESTASI SISWA ==========
+case "PrestasiSiswa":
+  return (
+    <>
+      {/* Pilih Siswa (dropdown ambil dari backend) */}
+      <select name="siswaId" onChange={handleChange} required>
+        <option value="">-- Pilih Siswa --</option>
+        {dataSiswa && dataSiswa.map((s) => (
+          <option key={s._id} value={s._id}>
+            {s.nama} ({s.nis})
+          </option>
+        ))}
+      </select>
 
-         // ========== PRESTASI ==========
+      <input
+        type="text"
+        name="namaPrestasi"
+        placeholder="Nama Prestasi"
+        onChange={handleChange}
+        required
+      />
 
+      <select name="tingkat" onChange={handleChange} required>
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="Sekolah">Sekolah</option>
+        <option value="Kabupaten">Kabupaten</option>
+        <option value="Provinsi">Provinsi</option>
+        <option value="Nasional">Nasional</option>
+        <option value="Internasional">Internasional</option>
+      </select>
 
+      <input
+        type="number"
+        name="tahun"
+        placeholder="Tahun Prestasi (misal: 2025)"
+        onChange={handleChange}
+        required
+      />
 
-         
+      <textarea
+        name="keterangan"
+        placeholder="Keterangan (opsional)"
+        onChange={handleChange}
+      />
+
+      <input
+        type="file"
+        name="sertifikat"
+        onChange={handleFileChange}
+      />
+    </>
+  );
 
          // ========== ALUMNI ==========
       case "Alumni":
@@ -460,6 +506,7 @@ case "StrukturOrganisasi":
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
+    PrestasiSiswa: { url: "prestasisiswa", fileField: "foto" },
     Alumni: { url: "alumni", fileField: "foto" },
     Berita: { url: "berita", fileField: "cover" },
     Galeri: { url: "galeri", fileField: "file" },
