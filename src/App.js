@@ -12,6 +12,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import DataGuru from "./Guru/DataGuru"; // 
 import DataStaf from "./Guru/DataStaf"; // 
 import VisiMisi from "./Profil/VisiMisi";
+import Fasilitas from "./Profil/Fasilitas";
 import FasilitasDetail from "./Profil/FasilitasDetail";
 import Sejarah from "./Profil/Sejarah";
 import Sambutan from "./Profil/Sambutan";
