@@ -51,7 +51,7 @@ function App() {
           <Route path="/profil/sambutan" element={<Sambutan />} />
           <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
           <Route path="/siswa/siswa" element={<Siswa />} />
-          <Route path="/siswa/prestasi-siswa" element={<PrestasiSiswa />} />
+          <Route path="/siswa/prestasi" element={<PrestasiSiswa />} />
           <Route path="/alumni/data-alumni" element={<DataAlumni />} />
           <Route path="/alumni/testimoni" element={<Testimoni />} />
           <Route path="/ppdb/formulir" element={<FormulirPPDB />} />
