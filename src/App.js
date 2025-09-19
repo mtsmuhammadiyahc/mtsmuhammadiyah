@@ -50,7 +50,7 @@ function App() {
           <Route path="/profil/sejarah" element={<Sejarah />} />
           <Route path="/profil/sambutan" element={<Sambutan />} />
           <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
-          <Route path="/siswa/data-siswa" element={<DataSiswa />} />
+          <Route path="/siswa/siswa" element={<Siswa />} />
           <Route path="/siswa/prestasi" element={<Prestasi />} />
           <Route path="/alumni/data-alumni" element={<DataAlumni />} />
           <Route path="/alumni/testimoni" element={<Testimoni />} />
