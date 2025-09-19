@@ -12,13 +12,12 @@ import Dashboard from "./pages/admin/Dashboard";
 import DataGuru from "./Guru/DataGuru"; // 
 import DataStaf from "./Guru/DataStaf"; // 
 import VisiMisi from "./Profil/VisiMisi";
-import PrestasiSiswa from "./PrestasiSiswa";
 import FasilitasDetail from "./Profil/FasilitasDetail";
 import Sejarah from "./Profil/Sejarah";
 import Sambutan from "./Profil/Sambutan";
 import StrukturOrganisasi from "./Profil/StrukturOrganisasi";
 import Siswa from "./Siswa/Siswa";
-import Prestasi from "./Siswa/Prestasi";
+import PrestasiSiswa from "./Siswa/PrestasiSiswa";
 import DataAlumni from "./Alumni/DataAlumni";
 import Testimoni from "./Alumni/Testimoni";
 import FormulirPPDB from "./PPDB/FormulirPPDB";
