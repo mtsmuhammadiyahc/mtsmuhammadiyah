@@ -41,7 +41,7 @@ function Navbar() {
       label: "Siswa",
       key: "siswa",
       sub: [
-        { label: "Data siswa", path: "/siswa/data-siswa" },
+        { label: "siswa", path: "/siswa/siswa" },
         { label: "Prestasi", path: "/siswa/prestasi" },
       ],
     },
