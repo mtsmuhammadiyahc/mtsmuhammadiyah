@@ -17,7 +17,7 @@ import FasilitasDetail from "./Profil/FasilitasDetail";
 import Sejarah from "./Profil/Sejarah";
 import Sambutan from "./Profil/Sambutan";
 import StrukturOrganisasi from "./Profil/StrukturOrganisasi";
-import DataSiswa from "./Siswa/DataSiswa";
+import Siswa from "./Siswa/Siswa";
 import Prestasi from "./Siswa/Prestasi";
 import DataAlumni from "./Alumni/DataAlumni";
 import Testimoni from "./Alumni/Testimoni";
