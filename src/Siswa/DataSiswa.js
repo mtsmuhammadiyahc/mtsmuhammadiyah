@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Siswa.css";
 
 const DataSiswa = () => {
   const [siswa, setSiswa] = useState([]);
