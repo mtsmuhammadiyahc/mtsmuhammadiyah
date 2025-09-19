@@ -223,18 +223,61 @@ case "StrukturOrganisasi":
       case "Siswa":
         return (
           <>
-             <select name="type" onChange={handleChange} required>
-              <option value="">-- Pilih Jenis Profil --</option>
-              <option value="Data Siswa">Data Siswa</option>
-              <option value="Prestasi">Prestasi</option>
-            </select>
-            <input type="text" name="nama" placeholder="Nama Siswa" onChange={handleChange} />
-            <input type="text" name="kelas" placeholder="Kelas" onChange={handleChange} />
-            <input type="number" name="tahunMasuk" placeholder="Tahun Masuk" onChange={handleChange} />
-            <input type="file" name="foto" onChange={handleFileChange} />
-          </>
-        );
+             <input
+              type="text"
+              name="nama"
+              placeholder="Nama Siswa"
+              onChange={handleChange}
+              required
+          />
+            <input
+            type="text"
+            name="nis"
+            placeholder="NIS"
+            onChange={handleChange}
+            required
+          />
+            <input
+            type="text"
+            name="kelas"
+            placeholder="Kelas (misal: 7A)"
+            onChange={handleChange}
+            required
+          />
+            <select
+            name="jenisKelamin"
+            onChange={handleChange}
+            required
+          >
+            <option value="">-- Pilih Jenis Kelamin --</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+          <textarea
+          name="alamat"
+          placeholder="Alamat"
+          onChange={handleChange}
+        />
+          <input
+            type="date"
+            name="tanggalLahir"
+            onChange={handleChange}
+        />
+          <input
+            type="file"
+            name="foto"
+            onChange={handleFileChange}
+        />
+      </>
+    );
 
+
+
+         // ========== PRESTASI ==========
+
+
+
+         
 
          // ========== ALUMNI ==========
       case "Alumni":
