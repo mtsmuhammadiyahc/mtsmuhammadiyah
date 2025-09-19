@@ -4,7 +4,7 @@ import "./PrestasiSiswa.css";
 
 const PrestasiSiswa = () => {
   const [prestasi, setPrestasi] = useState([]);
-  const [expandedIndex, setExpandedIndex] = useState(null); // simpan index yang dibuka
+  const [selectedPrestasi, setSelectedPrestasi] = useState(null); // buat modal/detail
 
   useEffect(() => {
     axios
@@ -12,14 +12,6 @@ const PrestasiSiswa = () => {
       .then((res) => setPrestasi(res.data))
       .catch((err) => console.error("Gagal fetch prestasi:", err));
   }, []);
-
-  const toggleExpand = (index) => {
-    if (expandedIndex === index) {
-      setExpandedIndex(null); // tutup kalau diklik lagi
-    } else {
-      setExpandedIndex(index); // buka detail card
-    }
-  };
 
   return (
     <div className="prestasi-container">
@@ -30,8 +22,8 @@ const PrestasiSiswa = () => {
         {prestasi.map((p, index) => (
           <div
             key={index}
-            className={`prestasi-card ${expandedIndex === index ? "expanded" : ""}`}
-            onClick={() => toggleExpand(index)}
+            className="prestasi-card"
+            onClick={() => setSelectedPrestasi(p)} // klik untuk detail
           >
             {p.sertifikat && (
               <img
@@ -46,21 +38,32 @@ const PrestasiSiswa = () => {
               </span>
               <h3>{p.namaPrestasi}</h3>
             </div>
-
-            {/* Detail muncul kalau expanded */}
-            {expandedIndex === index && (
-              <div className="prestasi-detail">
-                <p><strong>Tingkat:</strong> {p.tingkat}</p>
-                <p><strong>Tahun:</strong> {p.tahun}</p>
-                {p.siswaId && (
-                  <p><strong>Siswa:</strong> {p.siswaId.nama} ({p.siswaId.nis})</p>
-                )}
-                <p>{p.keterangan}</p>
-              </div>
-            )}
           </div>
         ))}
       </div>
+
+      {/* Modal Detail */}
+      {selectedPrestasi && (
+        <div className="modal-overlay" onClick={() => setSelectedPrestasi(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            {selectedPrestasi.sertifikat && (
+              <img
+                src={`https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${selectedPrestasi.sertifikat}`}
+                alt={selectedPrestasi.namaPrestasi}
+                className="modal-img"
+              />
+            )}
+            <h2>{selectedPrestasi.namaPrestasi}</h2>
+            <p><strong>Tingkat:</strong> {selectedPrestasi.tingkat}</p>
+            <p><strong>Tahun:</strong> {selectedPrestasi.tahun}</p>
+            {selectedPrestasi.siswaId && (
+              <p><strong>Siswa:</strong> {selectedPrestasi.siswaId.nama} ({selectedPrestasi.siswaId.nis})</p>
+            )}
+            <p>{selectedPrestasi.keterangan}</p>
+            <button className="close-btn" onClick={() => setSelectedPrestasi(null)}>Tutup</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
