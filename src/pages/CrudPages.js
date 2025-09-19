@@ -496,7 +496,7 @@ case "PrestasiSiswa":
     Guru: { url: "guru", fileField: "foto" },
     Staf: { url: "staf", fileField: "foto" },
     Siswa: { url: "siswa", fileField: "foto" },
-    PrestasiSiswa: { url: "prestasi-siswa", fileField: "sertifikat" }
+    PrestasiSiswa: { url: "prestasi-siswa", fileField: "sertifikat" },
     Alumni: { url: "alumni", fileField: "foto" },
     Berita: { url: "berita", fileField: "cover" },
     Galeri: { url: "galeri", fileField: "file" },
