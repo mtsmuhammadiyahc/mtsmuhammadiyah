@@ -7,7 +7,7 @@ const PrestasiSiswa = () => {
 
   useEffect(() => {
     axios
-      .get("https://be-production-d9fe.up.railway.app/api/admin/prestasisiswa") // ✅ tanpa tanda "-"
+      .get("https://be-production-d9fe.up.railway.app/api/admin/prestasi-siswa") // ✅ tanpa tanda "-"
       .then((res) => setPrestasi(res.data))
       .catch((err) => console.error("Gagal fetch prestasi:", err));
   }, []);
@@ -20,7 +20,7 @@ const PrestasiSiswa = () => {
           <div key={index} className="prestasi-card">
             {p.sertifikat && (
               <img
-                src={`https://be-production-d9fe.up.railway.app/uploads/prestasisiswa/${p.sertifikat}`} // ✅ folder sesuai backend
+                src={`https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${p.sertifikat}`} // ✅ folder sesuai backend
                 alt={p.namaPrestasi}
                 className="prestasi-img"
               />
