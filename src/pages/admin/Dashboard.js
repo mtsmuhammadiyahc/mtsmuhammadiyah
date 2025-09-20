@@ -20,7 +20,9 @@ function Dashboard() {
     "Sejarah",
     "StrukturOrganisasi",
     "Galeri",
-    "PPDB",
+    "PPDB_Info",
+    "PPDB_Formulir",
+    "PPDB_Jadwal",
   ];
 
   return (
