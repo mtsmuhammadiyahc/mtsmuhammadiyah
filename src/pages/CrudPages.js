@@ -331,113 +331,116 @@ case "PrestasiSiswa":
           </>
         );
 
-      case "PPDB":
+      // ========== PPDB INFO ==========
+case "PPDB_Info":
   return (
     <>
-      <select name="type" onChange={handleChange} required>
-        <option value="">-- Pilih Jenis PPDB --</option>
-        <option value="Info PPDB">Info PPDB</option>
-        <option value="Jadwal Seleksi">Jadwal Seleksi</option>
-      </select>
+      <input
+        type="text"
+        name="tahunAjaran"
+        placeholder="Tahun Ajaran (contoh: 2025/2026)"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="judul"
+        placeholder="Judul Info"
+        onChange={handleChange}
+        required
+      />
+      <textarea
+        name="deskripsi"
+        placeholder="Deskripsi Info"
+        onChange={handleChange}
+        required
+      />
+    </>
+  );
 
-      {/* ================== Info PPDB ================== */}
-      {formData.type === "Info PPDB" && (
-        <>
-          <input
-            type="text"
-            name="title"
-            placeholder="Judul Info PPDB"
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="content"
-            placeholder="Isi Informasi PPDB"
-            onChange={handleChange}
-            required
-          />
-          <input type="file" name="dokumen" onChange={handleFileChange} />
-        </>
-      )}
+// ========== PPDB FORMULIR ==========
+case "PPDB_Formulir":
+  return (
+    <>
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama Lengkap"
+        onChange={handleChange}
+        required
+      />
 
-      {/* ================== Jadwal Seleksi ================== */}
-      {formData.type === "Jadwal Seleksi" && (
-        <>
-          <input
-            type="text"
-            name="title"
-            placeholder="Judul Jadwal Seleksi"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="date"
-            name="tgl_mulai"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="date"
-            name="tgl_selesai"
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="keterangan"
-            placeholder="Keterangan Seleksi"
-            onChange={handleChange}
-          />
-          <input type="file" name="dokumen" onChange={handleFileChange} />
-        </>
-      )}
+      <input
+        type="text"
+        name="nisn"
+        placeholder="NISN"
+        onChange={handleChange}
+        required
+      />
 
-      {/* ================== Formulir PPDB ================== */}
-      {formData.type === "Formulir PPDB" && (
-        <>
-          <input
-            type="text"
-            name="nama"
-            placeholder="Nama Lengkap"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="nisn"
-            placeholder="NISN"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="date"
-            name="tgl_lahir"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="alamat"
-            placeholder="Alamat"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="nama_orangtua"
-            placeholder="Nama Orang Tua"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="hp_orangtua"
-            placeholder="No. HP Orang Tua"
-            onChange={handleChange}
-            required
-          />
-          <input type="file" name="dokumen" onChange={handleFileChange} />
-        </>
-      )}
+      <input
+        type="text"
+        name="alamat"
+        placeholder="Alamat Lengkap"
+        onChange={handleChange}
+        required
+      />
+
+      <input
+        type="text"
+        name="asalSekolah"
+        placeholder="Asal Sekolah"
+        onChange={handleChange}
+        required
+      />
+
+      <input
+        type="text"
+        name="noHp"
+        placeholder="Nomor HP"
+        onChange={handleChange}
+        required
+      />
+
+      {/* ✅ Upload Ijazah */}
+      <input
+        type="file"
+        name="ijazah"
+        onChange={handleFileChange}
+        required
+      />
+    </>
+  );
+
+// ========== PPDB JADWAL ==========
+case "PPDB_Jadwal":
+  return (
+    <>
+      <input
+        type="text"
+        name="tahunAjaran"
+        placeholder="Tahun Ajaran"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="tahap"
+        placeholder="Nama Tahap Seleksi"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="date"
+        name="tanggal"
+        onChange={handleChange}
+        required
+      />
+      <textarea
+        name="keterangan"
+        placeholder="Keterangan (opsional)"
+        onChange={handleChange}
+      />
     </>
   );
 
@@ -501,7 +504,9 @@ case "PrestasiSiswa":
     Berita: { url: "berita", fileField: "cover" },
     Galeri: { url: "galeri", fileField: "file" },
     Pengumuman: { url: "pengumuman" },
-    PPDB: { url: "ppdb", fileField: "dokumen" }
+    PPDB_Info: { url: "ppdb/info", fileField: "dokumen" },       // untuk brosur / pengumuman
+    PPDB_Formulir: { url: "ppdb/formulir", fileField: "ijazah" }, // upload ijazah di formulir
+    PPDB_Jadwal: { url: "ppdb/jadwal", fileField: "dokumen" }     // untuk upload jadwal (pdf / image)
   };
 
   const handleSubmit = async (e) => {
