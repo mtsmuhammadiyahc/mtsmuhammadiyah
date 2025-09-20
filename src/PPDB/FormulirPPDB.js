@@ -41,7 +41,7 @@ const FormulirPPDB = () => {
       });
 
       await axios.post(
-        "https://be-production-d9fe.up.railway.app/api/admin/ppdb/formulir_ppdb",
+        "https://be-production-d9fe.up.railway.app/api/admin/ppdb/formulir",
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
