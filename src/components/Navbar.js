@@ -46,15 +46,6 @@ function Navbar() {
       ],
     },
     {
-      label: "Alumni",
-      key: "alumni",
-      sub: [
-        { label: "Data Alumni", path: "/alumni/data-alumni" },
-        { label: "Testimoni", path: "/alumni/testimoni" },
-      ],
-
-    },
-    {
       label: "PPDB",
       key: "ppdb",
       sub: [
