@@ -11,6 +11,7 @@ const FormulirPPDB = () => {
     noHp: "",
   });
 
+  const [file, setFile] = useState(null); // untuk ijazah
   const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
@@ -20,12 +21,36 @@ const FormulirPPDB = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://mtsmuhcil-backend.onrender.com/api/admin/ppdb/formulir", formData);
+      const data = new FormData();
+      Object.keys(formData).forEach((key) => {
+        data.append(key, formData[key]);
+      });
+      if (file) {
+        data.append("ijazah", file);
+      }
+
+      await axios.post(
+        "https://be-production-d9fe.up.railway.app/api/admin/ppdb/formulir",
+        data,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
       setStatus("✅ Pendaftaran berhasil, data Anda sudah tersimpan.");
-      setFormData({ nama: "", nisn: "", alamat: "", asalSekolah: "", noHp: "" });
+      setFormData({
+        nama: "",
+        nisn: "",
+        alamat: "",
+        asalSekolah: "",
+        noHp: "",
+      });
+      setFile(null);
     } catch (err) {
       setStatus("❌ Gagal mendaftar, coba lagi.");
     }
@@ -35,7 +60,7 @@ const FormulirPPDB = () => {
     <div className="formulir-ppdb">
       <h2>Formulir Pendaftaran PPDB</h2>
       {status && <p className="status">{status}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input
           type="text"
           name="nama"
@@ -76,6 +101,9 @@ const FormulirPPDB = () => {
           onChange={handleChange}
           required
         />
+
+        {/* Upload Ijazah */}
+        <input type="file" name="ijazah" onChange={handleFileChange} accept="image/*,.pdf" />
 
         <button type="submit">Daftar</button>
       </form>
