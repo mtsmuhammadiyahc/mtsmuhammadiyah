@@ -35,11 +35,16 @@ const FormulirPPDB = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = new FormData();
-      Object.keys(formData).forEach((key) => {
-        data.append(key, formData[key]);
-      });
+      data.append("nama", formData.nama);
+      data.append("nisn", formData.nisn);
+      data.append("alamat", formData.alamat);
+      data.append("asalSekolah", formData.asalSekolah);
+      data.append("noHp", formData.noHp);
 
+      if (formData.ijazah) {
+        data.append("ijazah", formData.ijazah); // sesuai upload.single("ijazah")
+      }
+      
       await axios.post(
         "https://be-production-d9fe.up.railway.app/api/admin/formulir",
         data,
