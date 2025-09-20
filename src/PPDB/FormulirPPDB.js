@@ -1,6 +1,7 @@
+// src/PPDB/FormulirPPDB.js
 import React, { useState } from "react";
 import axios from "axios";
-import "./FormulirPPDB.css"; // optional styling
+import "./FormulirPPDB.css"; // styling opsional
 
 const FormulirPPDB = () => {
   const [formData, setFormData] = useState({
@@ -9,11 +10,12 @@ const FormulirPPDB = () => {
     alamat: "",
     asalSekolah: "",
     noHp: "",
+    ijazah: null, // file upload
   });
 
-  const [file, setFile] = useState(null); // untuk ijazah
   const [status, setStatus] = useState("");
 
+  // handle input text
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,10 +23,15 @@ const FormulirPPDB = () => {
     });
   };
 
+  // handle file upload
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setFormData({
+      ...formData,
+      ijazah: e.target.files[0],
+    });
   };
 
+  // submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -32,9 +39,6 @@ const FormulirPPDB = () => {
       Object.keys(formData).forEach((key) => {
         data.append(key, formData[key]);
       });
-      if (file) {
-        data.append("ijazah", file);
-      }
 
       await axios.post(
         "https://be-production-d9fe.up.railway.app/api/admin/ppdb/formulir",
@@ -49,9 +53,10 @@ const FormulirPPDB = () => {
         alamat: "",
         asalSekolah: "",
         noHp: "",
+        ijazah: null,
       });
-      setFile(null);
     } catch (err) {
+      console.error(err.response?.data || err.message);
       setStatus("❌ Gagal mendaftar, coba lagi.");
     }
   };
@@ -60,7 +65,8 @@ const FormulirPPDB = () => {
     <div className="formulir-ppdb">
       <h2>Formulir Pendaftaran PPDB</h2>
       {status && <p className="status">{status}</p>}
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="nama"
@@ -102,8 +108,14 @@ const FormulirPPDB = () => {
           required
         />
 
-        {/* Upload Ijazah */}
-        <input type="file" name="ijazah" onChange={handleFileChange} accept="image/*,.pdf" />
+        {/* upload ijazah */}
+        <input
+          type="file"
+          name="ijazah"
+          accept=".jpg,.jpeg,.png,.pdf"
+          onChange={handleFileChange}
+          required
+        />
 
         <button type="submit">Daftar</button>
       </form>
