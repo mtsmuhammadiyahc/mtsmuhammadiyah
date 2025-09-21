@@ -22,7 +22,6 @@ function Dashboard() {
     "Galeri",
     "PPDB_Info",
     "PPDB_Formulir",
-    "FormulirList",
     "PPDB_Jadwal",
   ];
 
