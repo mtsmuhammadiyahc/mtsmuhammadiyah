@@ -6,6 +6,7 @@
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid red; /* 🔴 TEST: biar kelihatan kalau CSS sudah kepakai */
 }
 
 .formulir-list h2 {
@@ -23,6 +24,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
+  background: #ffe8e8; /* 🔴 TEST background tabel */
 }
 
 .formulir-table th,
