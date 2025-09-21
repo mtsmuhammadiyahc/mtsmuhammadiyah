@@ -22,6 +22,7 @@ import PrestasiSiswa from "./Siswa/PrestasiSiswa";
 import DataAlumni from "./Alumni/DataAlumni";
 import Testimoni from "./Alumni/Testimoni";
 import FormulirPPDB from "./PPDB/FormulirPPDB";
+import FormulirList from "./PPDB/FormulirList";
 import InfoPPDB from "./PPDB/InfoPPDB";
 import JadwalSeleksi from "./PPDB/JadwalSeleksi";
 import Foto from "./Galeri/Foto";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/alumni/data-alumni" element={<DataAlumni />} />
           <Route path="/alumni/testimoni" element={<Testimoni />} />
           <Route path="/ppdb/formulir" element={<FormulirPPDB />} />
+          <Route path="/admin/formulir" element={<FormulirList />} />
           <Route path="/ppdb/info" element={<InfoPPDB />} />
           <Route path="/ppdb/jadwal-seleksi" element={<JadwalSeleksi />} />
           <Route path="/galeri/foto" element={<Foto />} />
