@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./FormulirPPDB.css";
+import "./FormulirList.css";
 
 const FormulirList = () => {
   const [pendaftar, setPendaftar] = useState([]);
