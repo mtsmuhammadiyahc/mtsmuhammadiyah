@@ -35,6 +35,7 @@ const FormulirPPDB = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const data = new FormData();
       data.append("nama", formData.nama);
       data.append("nisn", formData.nisn);
       data.append("alamat", formData.alamat);
