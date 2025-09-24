@@ -4,7 +4,7 @@ import "./PrestasiSiswa.css";
 
 const PrestasiSiswa = () => {
   const [prestasi, setPrestasi] = useState([]);
-  const [selectedPrestasi, setSelectedPrestasi] = useState(null); // buat modal/detail
+  const [selectedPrestasi, setSelectedPrestasi] = useState(null);
 
   useEffect(() => {
     axios
@@ -12,6 +12,17 @@ const PrestasiSiswa = () => {
       .then((res) => setPrestasi(res.data))
       .catch((err) => console.error("Gagal fetch prestasi:", err));
   }, []);
+
+  // fungsi helper ambil URL foto
+  const getImageUrl = (item) => {
+    if (item.sertifikat) {
+      return item.sertifikat; // ✅ Cloudinary URL langsung
+    }
+    if (item.fileLokal) {
+      return `https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${item.fileLokal}`;
+    }
+    return null;
+  };
 
   return (
     <div className="prestasi-container">
@@ -23,11 +34,11 @@ const PrestasiSiswa = () => {
           <div
             key={index}
             className="prestasi-card"
-            onClick={() => setSelectedPrestasi(p)} // klik untuk detail
+            onClick={() => setSelectedPrestasi(p)}
           >
-            {p.sertifikat && (
+            {getImageUrl(p) && (
               <img
-                src={`https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${p.sertifikat}`}
+                src={getImageUrl(p)}
                 alt={p.namaPrestasi}
                 className="prestasi-img"
               />
@@ -44,23 +55,38 @@ const PrestasiSiswa = () => {
 
       {/* Modal Detail */}
       {selectedPrestasi && (
-        <div className="modal-overlay" onClick={() => setSelectedPrestasi(null)}>
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedPrestasi(null)}
+        >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            {selectedPrestasi.sertifikat && (
+            {getImageUrl(selectedPrestasi) && (
               <img
-                src={`https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${selectedPrestasi.sertifikat}`}
+                src={getImageUrl(selectedPrestasi)}
                 alt={selectedPrestasi.namaPrestasi}
                 className="modal-img"
               />
             )}
             <h2>{selectedPrestasi.namaPrestasi}</h2>
-            <p><strong>Tingkat:</strong> {selectedPrestasi.tingkat}</p>
-            <p><strong>Tahun:</strong> {selectedPrestasi.tahun}</p>
+            <p>
+              <strong>Tingkat:</strong> {selectedPrestasi.tingkat}
+            </p>
+            <p>
+              <strong>Tahun:</strong> {selectedPrestasi.tahun}
+            </p>
             {selectedPrestasi.siswaId && (
-              <p><strong>Siswa:</strong> {selectedPrestasi.siswaId.nama} ({selectedPrestasi.siswaId.nis})</p>
+              <p>
+                <strong>Siswa:</strong> {selectedPrestasi.siswaId.nama} (
+                {selectedPrestasi.siswaId.nis})
+              </p>
             )}
             <p>{selectedPrestasi.keterangan}</p>
-            <button className="close-btn" onClick={() => setSelectedPrestasi(null)}>Tutup</button>
+            <button
+              className="close-btn"
+              onClick={() => setSelectedPrestasi(null)}
+            >
+              Tutup
+            </button>
           </div>
         </div>
       )}
