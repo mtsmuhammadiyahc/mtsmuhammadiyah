@@ -31,9 +31,13 @@ const FasilitasDetail = () => {
     <div className="profil-container" data-aos="fade-up">
       <h1 className="profil-title">{detail.nama}</h1>
 
-      {detail.foto && (
+      {(detail.image || detail.foto) && (
         <img
-          src={`${API_URL}/uploads/${detail.foto}`}
+          src={
+            detail.image
+              ? detail.image // ✅ URL dari Cloudinary
+              : `${API_URL}/uploads/${detail.foto}` // ✅ fallback Railway
+          }
           alt={detail.nama}
           className="profil-image"
           style={{
