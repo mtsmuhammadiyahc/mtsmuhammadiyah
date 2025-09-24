@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import "./FasilitasDetail.css";
-
 
 const FasilitasDetail = () => {
   const { id } = useParams();
@@ -29,17 +27,18 @@ const FasilitasDetail = () => {
   if (loading) return <p>Loading...</p>;
   if (!detail) return <p>Data fasilitas tidak ditemukan.</p>;
 
+  // 🔹 Pisahkan deskripsi berdasarkan baris baru
+  const deskripsiList = detail.deskripsi
+    ? detail.deskripsi.split(/\n|\r/).filter((item) => item.trim() !== "")
+    : [];
+
   return (
     <div className="profil-container" data-aos="fade-up">
       <h1 className="profil-title">{detail.nama}</h1>
 
-      {(detail.image || detail.foto) && (
+      {detail.foto && (
         <img
-          src={
-            detail.image
-              ? detail.image // ✅ URL dari Cloudinary
-              : `${API_URL}/uploads/${detail.foto}` // ✅ fallback Railway
-          }
+          src={`${API_URL}/uploads/${detail.foto}`}
           alt={detail.nama}
           className="profil-image"
           style={{
@@ -50,7 +49,15 @@ const FasilitasDetail = () => {
         />
       )}
 
-      <p className="profil-description">{detail.deskripsi}</p>
+      {deskripsiList.length > 0 ? (
+        <ul className="profil-description">
+          {deskripsiList.map((item, i) => (
+            <li key={i}>{item.trim()}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="profil-description">{detail.deskripsi}</p>
+      )}
 
       <Link to="/profil/fasilitas" className="back-link">
         ← Kembali ke daftar fasilitas
