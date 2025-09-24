@@ -43,3 +43,17 @@
   color: #1e40af; /* biru lebih tua */
   text-decoration: underline;
 }
+
+.profil-description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: justify;
+  padding-left: 20px;
+}
+
+.profil-description li {
+  margin-bottom: 8px;
+  list-style-type: disc; /* 🔹 bullet hitam */
+}
