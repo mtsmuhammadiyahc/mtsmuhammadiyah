@@ -43,14 +43,22 @@ const Fasilitas = () => {
               data-aos="fade-up"
               data-aos-delay={index * 150}
             >
-              {item.foto && (
+              {/* ✅ Cek apakah ada field image (Cloudinary) atau fallback ke foto (lokal) */}
+              {item.image ? (
                 <img
-                  src={`${API_URL}/uploads/${item.foto}`}
-                  alt={item.nama}
+                  src={item.image}
+                  alt={item.nama || item.judul}
                   className="profil-image"
                 />
-              )}
-              <div className="profil-label">{item.nama}</div>
+              ) : item.foto ? (
+                <img
+                  src={`${API_URL}/uploads/${item.foto}`}
+                  alt={item.nama || item.judul}
+                  className="profil-image"
+                />
+              ) : null}
+
+              <div className="profil-label">{item.nama || item.judul}</div>
             </Link>
           ))}
         </div>
