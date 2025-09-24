@@ -1,0 +1,45 @@
+.profil-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profil-title {
+  text-align: center;
+  color: #14532d; /* hijau tua biar seimbang */
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.profil-image {
+  display: block;
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 0 auto 25px auto;
+}
+
+.profil-description {
+  font-size: 16px;
+  line-height: 1.8; /* jarak antar baris */
+  text-align: justify; /* rata kiri kanan */
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.back-link {
+  display: inline-block;
+  color: #2563eb; /* biru */
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #1e40af; /* biru lebih tua */
+  text-decoration: underline;
+}
