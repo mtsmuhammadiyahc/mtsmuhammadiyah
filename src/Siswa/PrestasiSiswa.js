@@ -1,64 +1,58 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // ✅ tambahin ini
+import { useNavigate } from "react-router-dom";
 import "./PrestasiSiswa.css";
 
 const PrestasiSiswa = () => {
   const [prestasi, setPrestasi] = useState([]);
-  const [selectedPrestasi, setSelectedPrestasi] = useState(null);
-  const navigate = useNavigate(); // ✅ hook router
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("https://be-production-d9fe.up.railway.app/api/admin/prestasi-siswa")
       .then((res) => setPrestasi(res.data))
-      .catch((err) => console.error("Gagal fetch prestasi:", err));
+      .catch((err) => console.error("❌ Gagal fetch prestasi:", err));
   }, []);
 
-  // fungsi helper ambil URL foto
+  // fungsi helper untuk ambil URL gambar
   const getImageUrl = (item) => {
     if (item.sertifikat) {
-      return item.sertifikat; // ✅ Cloudinary URL langsung
+      return item.sertifikat; // URL cloud (Cloudinary, dsb.)
     }
     if (item.fileLokal) {
       return `https://be-production-d9fe.up.railway.app/uploads/prestasi-siswa/${item.fileLokal}`;
     }
-    return null;
+    return "/default-prestasi.jpg"; // fallback default
   };
 
   return (
     <div className="prestasi-container">
-      <h1>Prestasi</h1>
-      <p className="subtitle">Prestasi Siswa & Sekolah</p>
+      <h1 className="prestasi-heading">Prestasi</h1>
+      <p className="prestasi-subtitle">Prestasi Siswa & Sekolah MTs Muhammadiyah</p>
 
       <div className="prestasi-grid">
-        {prestasi.map((p, index) => (
+        {prestasi.map((p) => (
           <div
-            key={index}
+            key={p._id}
             className="prestasi-card"
-            // ✅ ubah: klik → redirect ke halaman detail
             onClick={() => navigate(`/siswa/prestasi/${p._id}`)}
           >
-            {getImageUrl(p) && (
+            <div className="prestasi-img-wrapper">
               <img
                 src={getImageUrl(p)}
                 alt={p.namaPrestasi}
                 className="prestasi-img"
               />
-            )}
-            <div className="prestasi-info">
-              <span className={`badge ${p.siswaId ? "siswa" : "sekolah"}`}>
+              <span className={`prestasi-badge ${p.siswaId ? "siswa" : "sekolah"}`}>
                 {p.siswaId ? "Siswa" : "Sekolah"}
               </span>
-              <h3>{p.namaPrestasi}</h3>
+            </div>
+            <div className="prestasi-info">
+              <h3 className="prestasi-title">{p.namaPrestasi}</h3>
             </div>
           </div>
         ))}
       </div>
-
-      {/* ❌ Modal dihapus? */}
-      {/* Kalau mau pake redirect ke halaman detail, 
-          bagian modal ini sebaiknya dihapus aja biar nggak dobel */}
     </div>
   );
 };
