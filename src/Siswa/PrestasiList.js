@@ -1,43 +1,64 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-//import "./PrestasiList.css";
+import "./PrestasiList.css";
 
 const PrestasiList = () => {
   const { id } = useParams();
   const [prestasi, setPrestasi] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`https://be-production-d9fe.up.railway.app/api/admin/prestasi-siswa/${id}`)
-      .then((res) => setPrestasi(res.data))
-      .catch((err) => console.error("Gagal fetch detail prestasi:", err));
+    const fetchPrestasi = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/admin/prestasi-siswa/${id}`
+        );
+        setPrestasi(res.data);
+      } catch (err) {
+        console.error("❌ Gagal fetch detail prestasi:", err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPrestasi();
   }, [id]);
 
-  if (!prestasi) {
-    return <p className="loading">Loading detail prestasi...</p>;
-  }
-
+  if (loading) return <p>Loading detail prestasi...</p>;
+  if (!prestasi) return <p>❌ Prestasi tidak ditemukan.</p>;
+  
   return (
-    <div className="prestasi-detail-container">
-      <div className="detail-card">
-        {prestasi.sertifikat && (
-          <img
-            src={prestasi.sertifikat}
-            alt={prestasi.namaPrestasi}
-            className="detail-img"
-          />
-        )}
-        <h2>{prestasi.namaPrestasi}</h2>
-        <p><strong>Tingkat:</strong> {prestasi.tingkat}</p>
-        <p><strong>Tahun:</strong> {prestasi.tahun}</p>
-        {prestasi.siswaId && (
-          <p>
-            <strong>Siswa:</strong> {prestasi.siswaId.nama} ({prestasi.siswaId.nis})
-          </p>
-        )}
+    <div className="prestasi-detail">
+      {/* Banner dengan foto */}
+      <div className="prestasi-banner">
+        <img
+          src={prestasi.sertifikat || "/default-prestasi.jpg"}
+          alt={prestasi.namaPrestasi}
+          className="prestasi-banner-img"
+        />
+        <h1 className="prestasi-title">{prestasi.namaPrestasi}</h1>
+      </div>
+
+      {/* Meta info */}
+      <div className="prestasi-meta">
+        <p>
+          <strong>Tingkat:</strong> {prestasi.tingkat}
+        </p>
+        <p>
+          <strong>Tahun:</strong> {prestasi.tahun}
+        </p>
+      </div>
+
+      {/* Deskripsi */}
+      <div className="prestasi-desc">
+        <h3>Deskripsi</h3>
         <p>{prestasi.keterangan}</p>
-        <Link to="/prestasi" className="back-btn">⬅ Kembali</Link>
+      </div>
+
+      {/* Tombol kembali */}
+      <div className="prestasi-back">
+        <Link to="/siswa/prestasi">← Kembali</Link>
       </div>
     </div>
   );
