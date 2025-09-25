@@ -19,6 +19,7 @@ import Sambutan from "./Profil/Sambutan";
 import StrukturOrganisasi from "./Profil/StrukturOrganisasi";
 import Siswa from "./Siswa/Siswa";
 import PrestasiSiswa from "./Siswa/PrestasiSiswa";
+import PrestasiList from "./Siswa/PrestasiList";
 import DataAlumni from "./Alumni/DataAlumni";
 import Testimoni from "./Alumni/Testimoni";
 import FormulirPPDB from "./PPDB/FormulirPPDB";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
           <Route path="/siswa/siswa" element={<Siswa />} />
           <Route path="/siswa/prestasi" element={<PrestasiSiswa />} />
+          <Route path="/siswa/prestasi/:id" element={<PrestasiList />} />
           <Route path="/alumni/data-alumni" element={<DataAlumni />} />
           <Route path="/alumni/testimoni" element={<Testimoni />} />
           <Route path="/ppdb/formulir" element={<FormulirPPDB />} />
