@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // ✅ tambahin ini
 import "./PrestasiSiswa.css";
 
 const PrestasiSiswa = () => {
   const [prestasi, setPrestasi] = useState([]);
   const [selectedPrestasi, setSelectedPrestasi] = useState(null);
+  const navigate = useNavigate(); // ✅ hook router
 
   useEffect(() => {
     axios
@@ -34,7 +36,8 @@ const PrestasiSiswa = () => {
           <div
             key={index}
             className="prestasi-card"
-            onClick={() => setSelectedPrestasi(p)}
+            // ✅ ubah: klik → redirect ke halaman detail
+            onClick={() => navigate(`/siswa/prestasi/${p._id}`)}
           >
             {getImageUrl(p) && (
               <img
@@ -53,43 +56,9 @@ const PrestasiSiswa = () => {
         ))}
       </div>
 
-      {/* Modal Detail */}
-      {selectedPrestasi && (
-        <div
-          className="modal-overlay"
-          onClick={() => setSelectedPrestasi(null)}
-        >
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            {getImageUrl(selectedPrestasi) && (
-              <img
-                src={getImageUrl(selectedPrestasi)}
-                alt={selectedPrestasi.namaPrestasi}
-                className="modal-img"
-              />
-            )}
-            <h2>{selectedPrestasi.namaPrestasi}</h2>
-            <p>
-              <strong>Tingkat:</strong> {selectedPrestasi.tingkat}
-            </p>
-            <p>
-              <strong>Tahun:</strong> {selectedPrestasi.tahun}
-            </p>
-            {selectedPrestasi.siswaId && (
-              <p>
-                <strong>Siswa:</strong> {selectedPrestasi.siswaId.nama} (
-                {selectedPrestasi.siswaId.nis})
-              </p>
-            )}
-            <p>{selectedPrestasi.keterangan}</p>
-            <button
-              className="close-btn"
-              onClick={() => setSelectedPrestasi(null)}
-            >
-              Tutup
-            </button>
-          </div>
-        </div>
-      )}
+      {/* ❌ Modal dihapus? */}
+      {/* Kalau mau pake redirect ke halaman detail, 
+          bagian modal ini sebaiknya dihapus aja biar nggak dobel */}
     </div>
   );
 };
