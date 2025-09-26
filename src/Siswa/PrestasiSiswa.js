@@ -27,8 +27,8 @@ const PrestasiSiswa = () => {
 
   return (
     <div className="prestasi-container">
-      <h1 className="prestasi-heading">Prestasi</h1>
-      <p className="prestasi-subtitle">Prestasi Siswa & Sekolah MTs Muhammadiyah</p>
+      <h1 className="prestasi-heading">Prestasi SISwa</h1>
+      
 
       <div className="prestasi-grid">
         {prestasi.map((p) => (
