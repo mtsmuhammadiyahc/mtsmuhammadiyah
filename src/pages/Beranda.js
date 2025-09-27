@@ -1,9 +1,9 @@
 // src/pages/Beranda.js
 import React from "react";
 import HeroSection from "../components/HeroSection";
-import Fasilitas from "./Profil/Fasilitas";  
-import VisiMisi from "./Profil/VisiMisi";    
-import Sambutan from "./Profil/Sambutan";    
+import Fasilitas from "./Profil/Fasilitas";  // ⬅ sesuai lokasi file
+import VisiMisi from "./Profil/VisiMisi";    // ⬅ sesuai lokasi file
+import Sambutan from "./Profil/Sambutan";    // ⬅ sesuai lokasi file
 
 function Beranda() {
   return (
@@ -26,7 +26,7 @@ function Beranda() {
       </section>
 
       <section id="fasilitas">
-        <Fasilitas /> {/* ⬅ panggil komponen Fasilitas di sini */}
+        <Fasilitas />
       </section>
 
       <section id="sambutan">
