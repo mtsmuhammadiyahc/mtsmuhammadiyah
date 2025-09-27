@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-//import "./VisiMisi.css";
-
+// import "./VisiMisi.css";
 
 const VisiMisi = () => {
   const [data, setData] = useState([]);
@@ -27,22 +26,30 @@ const VisiMisi = () => {
           <div key={idx} className="visimisi-content" data-aos="fade-up">
             {/* Visi */}
             <h3>Visi</h3>
-            <p>{item.visi}</p>
+            <p>{item?.visi || "Belum ada visi."}</p>
 
             {/* Misi */}
             <h3>Misi</h3>
-            <ol>
-              {Array.isArray(item.misi)
-                ? item.misi.map((m, i) => <li key={i}>{m}</li>)
-                : item.misi
-                    
-            </ol>
+            {Array.isArray(item?.misi) ? (
+              <ol>
+                {item.misi.map((m, i) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ol>
+            ) : (
+              <p>{item?.misi || "Belum ada misi."}</p>
+            )}
 
-            {item.foto && (
+            {/* Foto */}
+            {item?.foto && (
               <img
                 src={`${process.env.REACT_APP_API_URL}/uploads/${item.foto}`}
                 alt="Visi Misi"
-                style={{ maxWidth: "100%", borderRadius: "8px" }}
+                style={{
+                  maxWidth: "100%",
+                  borderRadius: "8px",
+                  marginTop: "10px",
+                }}
               />
             )}
           </div>
