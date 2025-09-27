@@ -70,10 +70,12 @@ const Fasilitas = ({ preview = false }) => {
         <p>Belum ada data fasilitas.</p>
       )}
 
-      {/* tombol lihat semua kalau preview */}
-      {preview && (
-        <div className="lihat-semua">
-          <Link to="/profil/fasilitas">Lihat Semua Fasilitas</Link>
+     {/* ✅ kalau preview, tambahkan tombol lihat semua */}
+      {preview && data.length > 3 && (
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <Link to="/profil/fasilitas" className="btn-lihat-semua">
+            Lihat Semua Fasilitas
+          </Link>
         </div>
       )}
     </div>
