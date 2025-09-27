@@ -1,9 +1,9 @@
 // src/pages/Beranda.js
 import React from "react";
 import HeroSection from "../components/HeroSection";
-import Fasilitas from "./Fasilitas"; // ⬅ perbaikan import
-import VisiMisi from "./VisiMisi";
-import Sambutan from "./Sambutan";
+import Fasilitas from "./Profil/Fasilitas";  
+import VisiMisi from "./Profil/VisiMisi";    
+import Sambutan from "./Profil/Sambutan";    
 
 function Beranda() {
   return (
