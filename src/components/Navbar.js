@@ -103,70 +103,89 @@ function Navbar() {
       </div>
 
       {/* Navbar */}
-      <header className="mts-navbar" ref={navRef} role="navigation" aria-label="Main navigation">
+      <header
+        className="mts-navbar"
+        ref={navRef}
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <div className="mts-navbar-inner">
+          {/* Logo kiri */}
           <Link to="/" className="mts-logo" onClick={onLinkClick}>
-            <img 
-                src="/image/logo-mts.png" 
-                alt="Logo MTs Muhammadiyah" 
-                className="logo-png"
-              />
+            <img
+              src="/image/logo-mts.png"
+              alt="Logo MTs Muhammadiyah"
+              className="logo-png"
+            />
           </Link>
-
-          {/* Slogan */}
+      
+          {/* Slogan tengah */}
           <div className="mts-slogan">
             <h2>MATSAMU Cilacap</h2>
             <p>"Membentuk Generasi Islami, Cerdas, dan Mandiri"</p>
           </div>
-
-          {/* mobile toggle */}
-          <button
-            className="mts-toggle"
-            aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
-            onClick={() => setMenuOpen((s) => !s)}
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-
-          {/* menu */}
-          <ul className={`mts-menu ${menuOpen ? "open" : ""}`}>
-            {menus.map((m) =>
-              m.sub ? (
-                <li
-                  key={m.key}
-                  className={`mts-item mts-has-sub ${openDropdown === m.key ? "open" : ""}`}
-                  // hover opens on desktop:
-                  onMouseEnter={() => window.innerWidth >= 768 && setOpenDropdown(m.key)}
-                  onMouseLeave={() => window.innerWidth >= 768 && setOpenDropdown(null)}
-                >
-                  <button
-                    className="mts-link mts-sub-toggle"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleDropdown(m.key);
-                    }}
-                    aria-expanded={openDropdown === m.key}
+      
+          {/* mobile toggle + menu kanan */}
+          <div className="mts-menu-wrapper">
+            {/* mobile toggle */}
+            <button
+              className="mts-toggle"
+              aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+              onClick={() => setMenuOpen((s) => !s)}
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+      
+            {/* menu */}
+            <ul className={`mts-menu ${menuOpen ? "open" : ""}`}>
+              {menus.map((m) =>
+                m.sub ? (
+                  <li
+                    key={m.key}
+                    className={`mts-item mts-has-sub ${
+                      openDropdown === m.key ? "open" : ""
+                    }`}
+                    onMouseEnter={() =>
+                      window.innerWidth >= 768 && setOpenDropdown(m.key)
+                    }
+                    onMouseLeave={() =>
+                      window.innerWidth >= 768 && setOpenDropdown(null)
+                    }
                   >
-                    {m.label} <FaChevronDown className="mts-chevron" />
-                  </button>
-
-                  <div className="mts-dropdown">
-                    {m.sub.map((s) => (
-                      <Link key={s.path} to={s.path} className="mts-dropdown-link" onClick={onLinkClick}>
-                        {s.label}
-                      </Link>
-                    ))}
-                  </div>
-                </li>
-              ) : (
-                <li key={m.path} className="mts-item">
-                  <Link to={m.path} className="mts-link" onClick={onLinkClick}>
-                    {m.label}
-                  </Link>
-                </li>
-              )
-            )}
-          </ul>
+                    <button
+                      className="mts-link mts-sub-toggle"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleDropdown(m.key);
+                      }}
+                      aria-expanded={openDropdown === m.key}
+                    >
+                      {m.label} <FaChevronDown className="mts-chevron" />
+                    </button>
+      
+                    <div className="mts-dropdown">
+                      {m.sub.map((s) => (
+                        <Link
+                          key={s.path}
+                          to={s.path}
+                          className="mts-dropdown-link"
+                          onClick={onLinkClick}
+                        >
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </li>
+                ) : (
+                  <li key={m.path} className="mts-item">
+                    <Link to={m.path} className="mts-link" onClick={onLinkClick}>
+                      {m.label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
         </div>
       </header>
     </>
