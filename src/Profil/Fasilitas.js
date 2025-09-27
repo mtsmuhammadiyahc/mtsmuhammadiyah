@@ -1,4 +1,5 @@
-// src/pages/Fasilitas.js
+// src/Profil/Fasilitas.js
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Fasilitas.css";
 
-const Fasilitas = () => {
+const Fasilitas = ({ preview = false }) => {
   const [data, setData] = useState([]);
 
   const API_URL =
@@ -29,13 +30,16 @@ const Fasilitas = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
+  // kalau preview cuma ambil 3 data
+  const fasilitasToShow = preview ? data.slice(0, 3) : data;
+
   return (
     <div className="profil-container" data-aos="fade-up">
-      <h1 className="profil-title">Fasilitas Mts Muhammadiyah</h1>
+      <h1 className="profil-title">Fasilitas MTs Muhammadiyah</h1>
 
-      {data.length > 0 ? (
+      {fasilitasToShow.length > 0 ? (
         <div className="profil-grid">
-          {data.map((item, index) => (
+          {fasilitasToShow.map((item, index) => (
             <Link
               key={item._id || index}
               to={`/profil/fasilitas/${item._id}`}
@@ -43,7 +47,7 @@ const Fasilitas = () => {
               data-aos="fade-up"
               data-aos-delay={index * 150}
             >
-              {/* ✅ Cek apakah ada field image (Cloudinary) atau fallback ke foto (lokal) */}
+              {/* ✅ cek image cloudinary / lokal */}
               {item.image ? (
                 <img
                   src={item.image}
@@ -64,6 +68,13 @@ const Fasilitas = () => {
         </div>
       ) : (
         <p>Belum ada data fasilitas.</p>
+      )}
+
+      {/* tombol lihat semua kalau preview */}
+      {preview && (
+        <div className="lihat-semua">
+          <Link to="/profil/fasilitas">Lihat Semua Fasilitas</Link>
+        </div>
       )}
     </div>
   );
