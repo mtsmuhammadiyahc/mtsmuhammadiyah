@@ -19,49 +19,41 @@ const VisiMisi = () => {
 
   return (
     <div className="visimisi-container" data-aos="fade-up">
-      <h1 className="visimisi-title">Visi & Misi</h1>
+      <h1 className="visimisi-title">Visi Misi</h1>
+
       {data.length > 0 ? (
         data.map((item, idx) => (
-          <div key={idx} className="visimisi-content" data-aos="fade-up">
-            {/* Visi */}
-            <h3>Visi</h3>
-            <p>{item?.visi || "Belum ada visi."}</p>
+          <div key={idx} className="visimisi-box" data-aos="fade-up">
+            {/* Kolom Visi */}
+            <div className="visi">
+              <h2>Visi Kami</h2>
+              <p>{item?.visi || "Belum ada visi."}</p>
+            </div>
 
-            {/* Misi */}
-            <h3>Misi</h3>
-            {item?.misi ? (
-              Array.isArray(item.misi) ? (
-                <ol>
-                  {item.misi.map((m, i) => (
-                    <li key={i}>{m}</li>
-                  ))}
-                </ol>
-              ) : (
-                <ol>
-                  {item.misi
-                    .split(/\r?\n/) // pecah berdasarkan enter
-                    .filter((m) => m.trim() !== "") // buang baris kosong
-                    .map((m, i) => (
-                      <li key={i}>{m.trim()}</li>
+            {/* Kolom Misi */}
+            <div className="misi">
+              <h2>Misi Kami</h2>
+              {item?.misi ? (
+                Array.isArray(item.misi) ? (
+                  <ol>
+                    {item.misi.map((m, i) => (
+                      <li key={i}>{m}</li>
                     ))}
-                </ol>
-              )
-            ) : (
-              <p>Belum ada misi.</p>
-            )}
-
-            {/* Foto */}
-            {item?.foto && (
-              <img
-                src={`${process.env.REACT_APP_API_URL}/uploads/${item.foto}`}
-                alt="Visi Misi"
-                style={{
-                  maxWidth: "100%",
-                  borderRadius: "8px",
-                  marginTop: "10px",
-                }}
-              />
-            )}
+                  </ol>
+                ) : (
+                  <ol>
+                    {item.misi
+                      .split(/\r?\n/)
+                      .filter((m) => m.trim() !== "")
+                      .map((m, i) => (
+                        <li key={i}>{m.trim()}</li>
+                      ))}
+                  </ol>
+                )
+              ) : (
+                <p>Belum ada misi.</p>
+              )}
+            </div>
           </div>
         ))
       ) : (
@@ -71,7 +63,4 @@ const VisiMisi = () => {
   );
 };
 
-
-
 export default VisiMisi;
-
