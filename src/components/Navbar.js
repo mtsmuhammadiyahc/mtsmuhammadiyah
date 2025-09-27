@@ -113,6 +113,12 @@ function Navbar() {
               />
           </Link>
 
+          {/* Slogan */}
+          <div className="mts-slogan">
+            <h2>MATSAMU Cilacap</h2>
+            <p>"Membentuk Generasi Islami, Cerdas, dan Mandiri"</p>
+          </div>
+
           {/* mobile toggle */}
           <button
             className="mts-toggle"
