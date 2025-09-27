@@ -35,7 +35,6 @@ const VisiMisi = () => {
               {Array.isArray(item.misi)
                 ? item.misi.map((m, i) => <li key={i}>{m}</li>)
                 : item.misi
-                    ?.split(/[.,;]/) // pisah berdasarkan koma/titik/titik koma
                     .filter((m) => m.trim() !== "")
                     .map((m, i) => <li key={i}>{m.trim()}</li>)}
             </ol>
