@@ -1,3 +1,4 @@
+```jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
@@ -8,7 +9,7 @@ const VisiMisi = () => {
 
   useEffect(() => {
     axios
-      .get(`https://be-production-d9fe.up.railway.app/api/admin/visimisi`)
+      .get("https://be-production-d9fe.up.railway.app/api/admin/visimisi")
       .then((res) => setData(res.data))
       .catch((err) => console.error("❌ Gagal ambil data visimisi:", err));
   }, []);
