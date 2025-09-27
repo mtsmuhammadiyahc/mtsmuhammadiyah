@@ -12,7 +12,7 @@ function Beranda() {
       <section id="sejarah"><h2>Sejarah</h2><p>Isi konten sejarah...</p></section>
       <section id="visi-misi"><VisiMisi /></section>
       <section id="struktur-organisasi"><h2>Struktur Organisasi</h2></section>
-      <section id="fasilitas"><Fasilitas />Fasilitas</section>
+      <section id="fasilitas"><h2>Fasilitas</h2><Fasilitas /></section>
       <section id="sambutan"><Sambutan /></section>
       <section id="galeri-foto"><h2>Galeri Foto</h2></section>
       <section id="galeri-video"><h2>Galeri Video</h2></section>
