@@ -1,8 +1,8 @@
+```jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import "./VisiMisi.css";
 
 const VisiMisi = () => {
   const [data, setData] = useState([]);
@@ -30,14 +30,25 @@ const VisiMisi = () => {
 
             {/* Misi */}
             <h3>Misi</h3>
-            {Array.isArray(item?.misi) ? (
-              <ol>
-                {item.misi.map((m, i) => (
-                  <li key={i}>{m}</li>
-                ))}
-              </ol>
+            {item?.misi ? (
+              Array.isArray(item.misi) ? (
+                <ol>
+                  {item.misi.map((m, i) => (
+                    <li key={i}>{m}</li>
+                  ))}
+                </ol>
+              ) : (
+                <ol>
+                  {item.misi
+                    .split(/\r?\n/) // pecah berdasarkan enter
+                    .filter((m) => m.trim() !== "") // buang baris kosong
+                    .map((m, i) => (
+                      <li key={i}>{m.trim()}</li>
+                    ))}
+                </ol>
+              )
             ) : (
-              <p>{item?.misi || "Belum ada misi."}</p>
+              <p>Belum ada misi.</p>
             )}
 
             {/* Foto */}
@@ -62,3 +73,4 @@ const VisiMisi = () => {
 };
 
 export default VisiMisi;
+```
