@@ -9,7 +9,6 @@ const Beranda = () => {
   return (
     <div>
       <HeroSection />
-      <VisiMisi />
       <Fasilitas />
       <Galeri />
     </div>
