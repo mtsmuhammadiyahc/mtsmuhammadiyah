@@ -3,6 +3,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VisiMisi.css";
+import HeroSection from "../components/HeroSection";
 
 const VisiMisi = () => {
   const [data, setData] = useState([]);
