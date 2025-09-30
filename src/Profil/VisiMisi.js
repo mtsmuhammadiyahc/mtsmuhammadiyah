@@ -13,7 +13,8 @@ const VisiMisi = ({ preview = false }) => {
       .then((res) => {
         console.log("VisiMisi API response:", res.data);
         if (res.data && res.data.length > 0) {
-          setData(res.data[0]); // 🔥 ambil object pertama
+          // 🔥 ambil data terakhir (atau bisa [0] kalau mau yang pertama)
+          setData(res.data[res.data.length - 1]);
         }
       })
       .catch((err) => console.error("❌ Gagal ambil data visimisi:", err));
@@ -25,49 +26,40 @@ const VisiMisi = ({ preview = false }) => {
 
   if (!data) return <p>Loading Visi & Misi...</p>;
 
-
   return (
     <div className="visimisi-container" data-aos="fade-up">
-      <h1 className="visimisi-title">Visi Misi</h1>
+      {!preview && <h1 className="visimisi-title">Visi Misi</h1>}
 
-      {data.length > 0 ? (
-        data.map((item, idx) => (
-          <div key={idx} className="visimisi-box" data-aos="fade-up">
-            {/* Kolom Visi */}
-            <div className="visi">
-              <h2>Visi Kami</h2>
-              <p>{item?.visi || "Belum ada visi."}</p>
-            </div>
+      {/* Kolom Visi */}
+      <div className="visi">
+        <h2>Visi Kami</h2>
+        <p>{data?.visi || "Belum ada visi."}</p>
+      </div>
 
-            {/* Kolom Misi */}
-            <div className="misi">
-              <h2>Misi Kami</h2>
-              {item?.misi ? (
-                Array.isArray(item.misi) ? (
-                  <ol>
-                    {item.misi.map((m, i) => (
-                      <li key={i}>{m}</li>
-                    ))}
-                  </ol>
-                ) : (
-                  <ol>
-                    {item.misi
-                      .split(/\r?\n/)
-                      .filter((m) => m.trim() !== "")
-                      .map((m, i) => (
-                        <li key={i}>{m.trim()}</li>
-                      ))}
-                  </ol>
-                )
-              ) : (
-                <p>Belum ada misi.</p>
-              )}
-            </div>
-          </div>
-        ))
-      ) : (
-        <p>Belum ada data Visi & Misi.</p>
-      )}
+      {/* Kolom Misi */}
+      <div className="misi">
+        <h2>Misi Kami</h2>
+        {data?.misi ? (
+          Array.isArray(data.misi) ? (
+            <ol>
+              {data.misi.map((m, i) => (
+                <li key={i}>{m}</li>
+              ))}
+            </ol>
+          ) : (
+            <ol>
+              {data.misi
+                .split(/\r?\n/)
+                .filter((m) => m.trim() !== "")
+                .map((m, i) => (
+                  <li key={i}>{m.trim()}</li>
+                ))}
+            </ol>
+          )
+        ) : (
+          <p>Belum ada misi.</p>
+        )}
+      </div>
     </div>
   );
 };
