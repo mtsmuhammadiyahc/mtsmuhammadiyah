@@ -10,7 +10,7 @@ function Beranda() {
     <div>
       <section id="beranda"><HeroSection /></section>
       <section id="sejarah"><h2>Sejarah</h2><p>Isi konten sejarah...</p></section>
-      <section id="visi-misi"><VisiMisi /></section>
+      <section id="visi-misi"><VisiMisi preview={true} /></section>
       <section id="struktur-organisasi"><h2>Struktur Organisasi</h2></section>
       <section id="fasilitas"><Fasilitas preview={true} /></section>
       <section id="sambutan"><Sambutan /></section>
