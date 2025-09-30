@@ -4,19 +4,22 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VisiMisi.css"; 
 
-const VisiMisi = () => {
-  const [data, setData] = useState([]);
+const VisiMisi = ({ preview = false }) => {
+  const [data, setData] = useState(null);
+  const API = "https://be-production-d9fe.up.railway.app/api/admin/visimisi";
 
   useEffect(() => {
-    axios
-      .get("https://be-production-d9fe.up.railway.app/api/admin/visimisi")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error("❌ Gagal ambil data visimisi:", err));
-  }, []);
+    console.log("VisiMisi mounted, preview=", preview);
+    axios.get(API)
+      .then(res => {
+        console.log("VisiMisi API response:", res.data);
+        if (res.data && res.data.length > 0) setData(res.data[0]);
+      })
+      .catch(err => console.error("VisiMisi fetch error:", err));
+  }, [preview]);
 
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
+  if (!data) return <div>Loading visi & misi... (cek console)</div>;
+
 
   return (
     <div className="visimisi-container" data-aos="fade-up">
